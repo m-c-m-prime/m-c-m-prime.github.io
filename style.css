@@ -58,4 +58,14 @@ footer {
     color: #FFFFFF;
 }
 
-# -__________________________________-
+/* Force email-link color */
+section .email-link {
+    color: #00FFFF !important; /* Neon Cyan or desired color */
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+section .email-link:hover {
+    color: #FFFFFF !important;
+    text-shadow: 0 0 5px #00FFFF;
+}
