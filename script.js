@@ -58,3 +58,8 @@ function scramble(element) {
         iterations += 1;
     }, 50);
 }
+
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}

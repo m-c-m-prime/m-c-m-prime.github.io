@@ -152,3 +152,116 @@ h1.glitch {
 h2.glitch {
     animation: glitch 1s infinite;
 }
+
+.music-section {
+    text-align: center;
+    max-width: 800px; /* Adjust width as needed */
+    margin: 0 auto; /* Centers the entire section */
+    padding: 20px;
+}
+
+/* Ensure embeds are centered */
+.music-embed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Ensure the nav menu is flexible on mobile */
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 5px 10px;
+}
+
+/* Make text slightly larger for better readability */
+body {
+    font-size: 1.2em;
+}
+
+.music-embed iframe {
+    max-width: 100%;
+    height: auto;
+    min-height: 120px;
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1, h2 {
+        font-size: 1.5em;
+    }
+}
+
+/* Ensure navigation looks clean */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #000;
+    border-bottom: 2px solid #fff;
+}
+
+nav .logo a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+/* Hide the regular nav links on small screens */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.hamburger {
+    display: none;
+    font-size: 2em;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: rgba(0, 0, 0, 0.9);
+        width: 200px;
+        padding: 15px;
+        text-align: right;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+
