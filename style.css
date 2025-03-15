@@ -1,20 +1,29 @@
+/* Import Matrix-style font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* Global styles */
 body {
     font-family: 'VT323', monospace;
     font-size: 1.4em;
-    color: #00FF41; /* Green color for clarity */
     background: #121212;
+    color: #00FF41;
+    margin: 0;
+    padding: 0;
+    text-shadow: 0 0 5px #00FF41;
 }
 
+/* Navigation styling */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: #181818;
+    background: #000;
+    border-bottom: 2px solid #00FF41;
 }
 
 .logo {
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: bold;
 }
 
@@ -22,18 +31,22 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 15px;
+    padding: 0;
+    margin: 0;
 }
 
 nav ul li a {
-    color: #aaa;
+    color: #00FF41;
     text-decoration: none;
-    transition: 0.3s;
+    transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: #fff;
+    color: #FFFFFF;
+    text-shadow: 0 0 5px #00FF41;
 }
 
+/* Main content styling */
 main {
     padding: 40px;
     min-height: 60vh;
@@ -43,6 +56,7 @@ main {
     text-align: center;
 }
 
+<<<<<<< Updated upstream
 footer {
     text-align: center;
     padding: 15px;
@@ -53,6 +67,20 @@ footer {
 /* Force email-link color */
 section .email-link {
     color: #00FFFF !important; /* Neon Cyan or desired color */
+=======
+.hero h1::after {
+    content: '_';
+    animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* Email link specific override */
+section .email-link {
+    color: #00FFFF !important; /* Neon Cyan */
+>>>>>>> Stashed changes
     text-decoration: none;
     transition: color 0.3s ease-in-out;
 }
@@ -61,3 +89,16 @@ section .email-link:hover {
     color: #FFFFFF !important;
     text-shadow: 0 0 5px #00FFFF;
 }
+<<<<<<< Updated upstream
+=======
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #000;
+    border-top: 1px solid #00FF41;
+    color: #00FF41;
+}
+=
+>>>>>>> Stashed changes
