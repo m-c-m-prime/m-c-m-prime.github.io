@@ -6,7 +6,11 @@ body {
     font-family: 'VT323', monospace;
     font-size: 1.4em;
     background: #121212;
+<<<<<<< Updated upstream
     color: #FFFFFF;
+=======
+    color: #00FF41;
+>>>>>>> Stashed changes
     margin: 0;
     padding: 0;
     text-shadow: 0 0 5px #00FF41;
@@ -57,6 +61,7 @@ main {
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 footer {
     text-align: center;
     padding: 15px;
@@ -73,13 +78,24 @@ section .email-link {
     animation: blink 1s step-start infinite;
 }
 
+=======
+.hero h1::after {
+    content: '_';
+    animation: blink 1s step-start infinite;
+}
+
+>>>>>>> Stashed changes
 @keyframes blink {
     50% { opacity: 0; }
 }
 
 /* Email link specific override */
 section .email-link {
+<<<<<<< Updated upstream
     color: #FFB000; /* Soft Amber */
+>>>>>>> Stashed changes
+=======
+    color: #00FFFF !important; /* Neon Cyan */
 >>>>>>> Stashed changes
     text-decoration: none;
     transition: color 0.3s ease-in-out;
@@ -87,7 +103,11 @@ section .email-link {
 
 section .email-link:hover {
     color: #FFFFFF !important;
+<<<<<<< Updated upstream
     text-shadow: 0 0 1px #00FFFF;
+=======
+    text-shadow: 0 0 5px #00FFFF;
+>>>>>>> Stashed changes
 }
 <<<<<<< Updated upstream
 =======
@@ -100,5 +120,9 @@ footer {
     border-top: 1px solid #00FF41;
     color: #00FF41;
 }
+<<<<<<< Updated upstream
+=
+>>>>>>> Stashed changes
+=======
 =
 >>>>>>> Stashed changes
