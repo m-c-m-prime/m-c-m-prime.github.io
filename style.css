@@ -61,6 +61,18 @@ main {
     50% { opacity: 0; }
 }
 
+/* Index Image */
+
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 /* Email Link */
 section .email-link, section .email-link:visited {
     color: #FFFFFF !important;
