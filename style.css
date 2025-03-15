@@ -49,3 +49,12 @@ footer {
     background: #181818;
     font-size: 0.9em;
 }
+
+.email-link {
+    color: #00FFFF; /* Neon Cyan */
+    text-decoration: none;
+}
+.email-link:hover {
+    color: #FFFFFF; /* White for hover, great readability */
+}
+
