@@ -25,6 +25,15 @@ nav {
     font-weight: bold;
 }
 
+.logo a {
+    color: #FFFFFF;          /* white text */
+    text-decoration: none;   /* removes underline */
+}
+
+.logo a:hover {
+    color: #CCCCCC;          /* subtle hover effect */
+}
+
 nav ul {
     list-style: none;
     display: flex;
