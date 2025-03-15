@@ -87,7 +87,7 @@ section .email-link {
 
 section .email-link:hover {
     color: #FFFFFF !important;
-    text-shadow: 0 0 5px #00FFFF;
+    text-shadow: 0 0 1px #00FFFF;
 }
 <<<<<<< Updated upstream
 =======
