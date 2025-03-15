@@ -79,7 +79,7 @@ section .email-link {
 
 /* Email link specific override */
 section .email-link {
-    color: #00FFFF !important; /* Neon Cyan */
+    color: #FFB000; /* Soft Amber */
 >>>>>>> Stashed changes
     text-decoration: none;
     transition: color 0.3s ease-in-out;
