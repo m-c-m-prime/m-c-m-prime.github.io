@@ -49,3 +49,11 @@ footer {
     background: #181818;
     font-size: 0.7em;
 }
+
+.email-link {
+    color: #FFB000; /* Soft Amber */
+    text-decoration: none;
+}
+.email-link:hover {
+    color: #FFFFFF;
+}
