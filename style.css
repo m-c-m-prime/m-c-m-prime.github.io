@@ -2,13 +2,12 @@
 
 /* Global Styles */
 body {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'VT323', monospace;
     font-size: 1.4em;
-    background: #121212;
+    background: #000;
     color: #FFFFFF;
     margin: 0;
     padding: 0;
-    /* removed glow text-shadow */
 }
 
 /* Navigation */
@@ -18,7 +17,7 @@ nav {
     align-items: center;
     padding: 20px;
     background: #000;
-    border-bottom: 2px solid #00FF41;
+    border-bottom: 2px solid #FFFFFF;
 }
 
 .logo {
@@ -35,12 +34,12 @@ nav ul {
 }
 
 nav ul li a {
-    color: #00FF41;
+    color: #FFFFFF;
     text-decoration: none;
 }
 
 nav ul li a:hover {
-    color: #FFFFFF;
+    color: #CCCCCC;
 }
 
 /* Main Content */
@@ -62,14 +61,14 @@ main {
     50% { opacity: 0; }
 }
 
-/* Email Link - Force override browser default blue link */
+/* Email Link */
 section .email-link, section .email-link:visited {
-    color: #00FFFF !important;
+    color: #FFFFFF !important;
     text-decoration: none;
 }
 
 section .email-link:hover {
-    color: #FFFFFF !important;
+    color: #CCCCCC !important;
 }
 
 /* Footer */
@@ -77,6 +76,6 @@ footer {
     text-align: center;
     padding: 15px;
     background: #000;
-    border-top: 1px solid #00FF41;
-    color: #00FF41;
+    border-top: 1px solid #FFFFFF;
+    color: #FFFFFF;
 }
