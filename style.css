@@ -1,22 +1,17 @@
-/* Import Matrix-style font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-/* Global styles */
+/* Global Styles */
 body {
-    font-family: 'VT323', monospace;
+    font-family: 'Share Tech Mono', monospace;
     font-size: 1.4em;
     background: #121212;
-<<<<<<< Updated upstream
     color: #FFFFFF;
-=======
-    color: #00FF41;
->>>>>>> Stashed changes
     margin: 0;
     padding: 0;
-    text-shadow: 0 0 5px #00FF41;
+    /* removed glow text-shadow */
 }
 
-/* Navigation styling */
+/* Navigation */
 nav {
     display: flex;
     justify-content: space-between;
@@ -35,22 +30,20 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 15px;
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
 nav ul li a {
     color: #00FF41;
     text-decoration: none;
-    transition: color 0.3s;
 }
 
 nav ul li a:hover {
     color: #FFFFFF;
-    text-shadow: 0 0 5px #00FF41;
 }
 
-/* Main content styling */
+/* Main Content */
 main {
     padding: 40px;
     min-height: 60vh;
@@ -60,59 +53,26 @@ main {
     text-align: center;
 }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-footer {
-    text-align: center;
-    padding: 15px;
-    background: #181818;
-    font-size: 0.7em;
-}
-
-/* Force email-link color */
-section .email-link {
-    color: #00FFFF !important; /* Neon Cyan or desired color */
-=======
 .hero h1::after {
     content: '_';
     animation: blink 1s step-start infinite;
 }
 
-=======
-.hero h1::after {
-    content: '_';
-    animation: blink 1s step-start infinite;
-}
-
->>>>>>> Stashed changes
 @keyframes blink {
     50% { opacity: 0; }
 }
 
-/* Email link specific override */
-section .email-link {
-<<<<<<< Updated upstream
-    color: #FFB000; /* Soft Amber */
->>>>>>> Stashed changes
-=======
-    color: #00FFFF !important; /* Neon Cyan */
->>>>>>> Stashed changes
+/* Email Link - Force override browser default blue link */
+section .email-link, section .email-link:visited {
+    color: #00FFFF !important;
     text-decoration: none;
-    transition: color 0.3s ease-in-out;
 }
 
 section .email-link:hover {
     color: #FFFFFF !important;
-<<<<<<< Updated upstream
-    text-shadow: 0 0 1px #00FFFF;
-=======
-    text-shadow: 0 0 5px #00FFFF;
->>>>>>> Stashed changes
 }
-<<<<<<< Updated upstream
-=======
 
-/* Footer styling */
+/* Footer */
 footer {
     text-align: center;
     padding: 15px;
@@ -120,9 +80,3 @@ footer {
     border-top: 1px solid #00FF41;
     color: #00FF41;
 }
-<<<<<<< Updated upstream
-=
->>>>>>> Stashed changes
-=======
-=
->>>>>>> Stashed changes
