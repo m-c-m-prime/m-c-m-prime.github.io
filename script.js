@@ -28,11 +28,46 @@ function scrambleText(element, speed = 50) {
     }, speed);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('h1, h2').forEach((heading) => {
+// ✅ Ensure DOM is fully loaded before running scripts
+document.addEventListener("DOMContentLoaded", function () {
+    
+    // ✅ Scramble Effect for H1 and H2
+    document.querySelectorAll("h1, h2").forEach((heading) => {
         scrambleTextEffect(heading);
     });
+
+    // ✅ Hamburger Menu Toggle
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+    }
 });
+
+// ✅ Scramble Text Effect Function (Ensure it stays intact)
+function scrambleTextEffect(element) {
+    const originalText = element.textContent;
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
+    
+    element.addEventListener("mouseover", () => {
+        let iterations = 0;
+
+        const interval = setInterval(() => {
+            element.textContent = originalText
+                .split("")
+                .map((char, index) => 
+                    index < iterations ? originalText[index] : letters[Math.floor(Math.random() * letters.length)]
+                )
+                .join("");
+
+            if (iterations >= originalText.length) clearInterval(interval);
+            iterations++;
+        }, 50);
+    });
+}
 
 function scrambleTextEffect(element) {
     element.addEventListener('mouseover', () => scramble(element));
