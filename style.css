@@ -51,10 +51,10 @@ footer {
 }
 
 .email-link {
-    color: #00FFFF; /* Neon Cyan */
+    color: #FFB000; /* Soft Amber */
     text-decoration: none;
 }
 .email-link:hover {
-    color: #FFFFFF; /* White for hover, great readability */
+    color: #FFFFFF;
 }
 
