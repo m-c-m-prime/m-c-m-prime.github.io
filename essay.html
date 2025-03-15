@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>M–C–M' | Essay</title>
     <link rel="stylesheet" href="style.css">
+
     <style>
-        /* Invert PDF colors, leaving images intact */
+        /* ✅ Dark Mode PDF Viewer without Distorting Images */
         .pdf-container {
             width: 100%;
             height: 100vh;
@@ -14,46 +15,72 @@
             background: #000;
         }
 
-        .pdf-container embed {
+        .pdf-container iframe {
             width: 100%;
             height: 100%;
-            filter: invert(1) hue-rotate(180deg);
+            background: #000;
+            filter: invert(1) contrast(1.2);
+        }
+
+        /* ✅ Center the download link */
+        .download-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .download-link a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .download-link a:hover {
+            color: #CCCCCC;
         }
     </style>
 </head>
 <body>
+
+    <!-- ✅ Fixed Navigation -->
     <nav>
-    <div class="logo">
-        <a href="index.html">M–C–M'</a>
-    </div>
+        <div class="logo">
+            <a href="index.html">M–C–M'</a>
+        </div>
 
-    <!-- Hamburger Menu Button -->
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <!-- ✅ Hamburger Menu -->
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-    <ul class="nav-links">
-        <li><a href="index.html">0</a></li>
-        <li><a href="about.html">definition</a></li>
-        <li><a href="music.html">soundbank</a></li>
-        <li><a href="writing.html">textbank</a></li>
-        <li><a href="gallery.html">imagebank</a></li>
-        <li><a href="contact.html">contact</a></li>
-    </ul>
-</nav>
-
+        <ul class="nav-links">
+            <li><a href="index.html">0</a></li>
+            <li><a href="about.html">definition</a></li>
+            <li><a href="music.html">soundbank</a></li>
+            <li><a href="writing.html">textbank</a></li>
+            <li><a href="gallery.html">imagebank</a></li>
+            <li><a href="contact.html">contact</a></li>
+        </ul>
+    </nav>
 
     <main>
         <section>
-                <h2 class="flicker">textbank</h2>
+            <h2 class="flicker">textbank</h2>
 
-                <div class="pdf-container">
-                    <iframe src="assets/M-C-M_essay.pdf" width="100%" height="800px"></iframe>
-                </div>
+            <div class="pdf-container">
+                <iframe src="assets/M-C-M_essay.pdf" width="100%" height="800px"></iframe>
+            </div>
+
+            <!-- ✅ Direct Download Link for Mobile Users -->
+            <div class="download-link">
+                <p><a href="assets/M-C-M_essay.pdf" target="_blank">🔗 Download Essay as PDF</a></p>
+            </div>
+
         </section>
     </main>
 
     <footer>
         &copy; 2025 M–C–M'
     </footer>
+
     <script src="script.js"></script>
+
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <!-- Google Fonts (Matrix-style font) -->
+    <!-- Google Fonts (Matrix-style font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
@@ -13,36 +13,43 @@
     <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
+
+    <!-- ✅ Fixed Navigation -->
     <nav>
-    <div class="logo">
-        <a href="index.html">M–C–M'</a>
-    </div>
+        <div class="logo">
+            <a href="index.html">M–C–M'</a>
+        </div>
 
-    <!-- Hamburger Menu Button -->
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <!-- ✅ Hamburger Menu -->
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-    <ul class="nav-links">
-        <li><a href="index.html">0</a></li>
-        <li><a href="about.html">definition</a></li>
-        <li><a href="music.html">soundbank</a></li>
-        <li><a href="writing.html">textbank</a></li>
-        <li><a href="gallery.html">imagebank</a></li>
-        <li><a href="contact.html">contact</a></li>
-    </ul>
-</nav>
-
+        <ul class="nav-links">
+            <li><a href="index.html">0</a></li>
+            <li><a href="about.html">definition</a></li>
+            <li><a href="music.html">soundbank</a></li>
+            <li><a href="writing.html">textbank</a></li>
+            <li><a href="gallery.html">imagebank</a></li>
+            <li><a href="contact.html">contact</a></li>
+        </ul>
+    </nav>
 
     <main>
         <section>
             <h2 class="flicker">textbank</h2>
-            <li><a href="essay.html">M-C-M' (Prime) | Deterritorializing Axiomatics</a></li>
-            <li><a href="essay2swarm.html">SWARM Theory | Becoming Murmuration</a></li>
+
+            <!-- ✅ Wrapped list items in <ul> -->
+            <ul class="writing-list">
+                <li><a href="essay.html">M-C-M' (Prime) | Deterritorializing Axiomatics</a></li>
+                <li><a href="essay2swarm.html">SWARM Theory | Becoming Murmuration</a></li>
+            </ul>
         </section>
     </main>
 
     <footer>
         &copy; 2025 M–C–M'
     </footer>
+
     <script src="script.js"></script>
+
 </body>
 </html>
