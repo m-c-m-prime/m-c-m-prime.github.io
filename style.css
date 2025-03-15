@@ -91,3 +91,8 @@ footer {
     border-top: 1px solid #FFFFFF;
     color: #FFFFFF;
 }
+
+.bandcamp-embed {
+    max-width: 700px; /* adjust as needed */
+    margin: 20px auto; /* center embed player */
+}
