@@ -96,3 +96,9 @@ footer {
     max-width: 700px; /* adjust as needed */
     margin: 20px auto; /* center embed player */
 }
+
+.music-section {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto; /* centers horizontally */
+}
