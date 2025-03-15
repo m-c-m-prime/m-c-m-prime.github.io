@@ -28,15 +28,13 @@ function scrambleText(element, speed = 50) {
     }, speed);
 }
 
-// ✅ Ensure DOM is fully loaded before running scripts
 document.addEventListener("DOMContentLoaded", function () {
-    
     // ✅ Scramble Effect for H1 and H2
     document.querySelectorAll("h1, h2").forEach((heading) => {
         scrambleTextEffect(heading);
     });
 
-    // ✅ Hamburger Menu Toggle
+    // ✅ Hamburger Menu Functionality
     const hamburger = document.querySelector(".hamburger");
     const navLinks = document.querySelector(".nav-links");
 
@@ -44,8 +42,37 @@ document.addEventListener("DOMContentLoaded", function () {
         hamburger.addEventListener("click", function () {
             navLinks.classList.toggle("active");
         });
+
+        // ✅ Close menu when clicking outside
+        document.addEventListener("click", function (event) {
+            if (!navLinks.contains(event.target) && !hamburger.contains(event.target)) {
+                navLinks.classList.remove("active");
+            }
+        });
     }
 });
+
+// ✅ Scramble Text Effect Function (Keep this working)
+function scrambleTextEffect(element) {
+    const originalText = element.textContent;
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
+    
+    element.addEventListener("mouseover", () => {
+        let iterations = 0;
+
+        const interval = setInterval(() => {
+            element.textContent = originalText
+                .split("")
+                .map((char, index) => 
+                    index < iterations ? originalText[index] : letters[Math.floor(Math.random() * letters.length)]
+                )
+                .join("");
+
+            if (iterations >= originalText.length) clearInterval(interval);
+            iterations++;
+        }, 50);
+    });
+}
 
 // ✅ Scramble Text Effect Function (Ensure it stays intact)
 function scrambleTextEffect(element) {

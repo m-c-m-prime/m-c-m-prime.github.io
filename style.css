@@ -10,28 +10,67 @@ body {
     padding: 0;
 }
 
-/* Navigation */
+/* Navigation Bar */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background: #000;
-    border-bottom: 2px solid #FFFFFF;
+    background: black;
+    padding: 15px 20px;
+    border-bottom: 2px solid white;
 }
 
-.logo {
-    font-size: 1.6em;
+/* Fix Logo */
+.logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
     font-weight: bold;
 }
 
-.logo a {
-    color: #FFFFFF;          /* white text */
-    text-decoration: none;   /* removes underline */
+/* Hide regular nav links on mobile */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
 }
 
-.logo a:hover {
-    color: #CCCCCC;          /* subtle hover effect */
+/* Ensure text is styled properly */
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Hamburger Menu Button */
+.hamburger {
+    display: none;
+    font-size: 2em;
+    cursor: pointer;
+    color: white;
+}
+
+/* ✅ Make Navigation Mobile-Friendly */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: rgba(0, 0, 0, 0.9);
+        width: 200px;
+        padding: 15px;
+        text-align: right;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
 }
 
 nav ul {
