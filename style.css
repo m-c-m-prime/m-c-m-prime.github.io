@@ -50,14 +50,6 @@ footer {
     font-size: 0.7em;
 }
 
-.email-link {
-    color: #FFB000; /* Soft Amber */
-    text-decoration: none;
-}
-.email-link:hover {
-    color: #FFFFFF;
-}
-
 /* Force email-link color */
 section .email-link {
     color: #00FFFF !important; /* Neon Cyan or desired color */
