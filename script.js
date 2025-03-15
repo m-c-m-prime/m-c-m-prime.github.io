@@ -67,7 +67,7 @@ function scrambleTextEffect(element) {
             iterations++;
         }, 50);
     });
-}
+}s
 
 function scrambleTextEffect(element) {
     element.addEventListener('mouseover', () => scramble(element));
