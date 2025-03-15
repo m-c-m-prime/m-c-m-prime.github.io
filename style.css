@@ -51,10 +51,13 @@ footer {
 }
 
 .email-link {
-    color: #FFB000; /* Soft Amber */
+    color: #00FFFF; 
     text-decoration: none;
+    transition: color 0.3s ease-in-out;
 }
+
 .email-link:hover {
-    color: #FFFFFF;
+    color: #00FFFF;
+    text-shadow: 0 0 5px #00FFFF;
 }
 
