@@ -20,6 +20,27 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
+/* ✅ Loading Screen (Centered & Fixed) */
+#loading-screen {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    color: #29ff79;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.8s ease-out;
+}
+
+/* ✅ Hide Loading Screen After Page Loads */
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* ✅ Matrix Effect Background */
 #matrix {
     position: fixed;
@@ -31,7 +52,7 @@ body {
     pointer-events: none;
 }
 
-/* ✅ Navigation Bar (Fixed & Responsive) */
+/* ✅ Navigation Bar */
 nav {
     display: flex;
     justify-content: space-between;
@@ -52,7 +73,7 @@ nav {
     font-weight: bold;
 }
 
-/* ✅ Navigation Links (Prevent Overflow) */
+/* ✅ Navigation Links */
 .nav-links {
     list-style: none;
     display: flex;
@@ -60,12 +81,12 @@ nav {
     margin: 0;
     padding: 0;
     flex-wrap: wrap;
-    justify-content: flex-end; /* Align to right */
+    justify-content: flex-end;
     width: auto;
 }
 
 .nav-links li {
-    white-space: nowrap; /* Prevents word break */
+    white-space: nowrap;
 }
 
 .nav-links li a {
@@ -78,10 +99,9 @@ nav {
     color: #CCCCCC;
 }
 
-/* ✅ Fix Navbar Overflow for Small Screens */
+/* ✅ Fix Navbar Overflow */
 @media (max-width: 1024px) {
     .nav-links {
-        display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
@@ -186,30 +206,10 @@ footer {
     color: #FFFFFF;
 }
 
-/* ✅ Remove Custom Cursor */
-#custom-cursor {
-    display: none !important;
-}
-
 /* ✅ Bandcamp Embed */
 .bandcamp-embed {
     max-width: 700px;
     margin: 20px auto;
-}
-
-/* ✅ Gallery Grid */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 15px;
-    padding: 20px;
-}
-
-.gallery-grid img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 5px;
 }
 
 /* ✅ Responsive Fix for Gallery */
@@ -248,18 +248,4 @@ footer {
         top: 15px;
         right: 15px;
     }
-}
-
-/* ✅ Glitch Click Effect */
-.glitch-click {
-    animation: glitchClick 0.5s linear;
-}
-
-@keyframes glitchClick {
-    0% { transform: translate(0, 0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(2px, -2px); }
-    60% { transform: translate(-2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-    100% { transform: translate(0, 0); }
 }

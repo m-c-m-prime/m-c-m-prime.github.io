@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
     
-    // ✅ Remove loading screen after page loads
+    // ✅ Remove Loading Screen After Page Loads
     const loadingScreen = document.getElementById("loading-screen");
     if (loadingScreen) {
         setTimeout(() => {
             loadingScreen.classList.add("hidden");
             setTimeout(() => {
-                loadingScreen.remove();  // ✅ Fully remove from DOM to prevent interference
-            }, 500); // Ensure animation finishes before removal
-        }, 2000); // Delay of 2 seconds
+                loadingScreen.remove();  // ✅ Fully remove from DOM after fade-out
+            }, 500);
+        }, 1200); // Fades out after 1.2s
     }
 
     // ✅ Fix Hamburger Menu Toggle
@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelector(".nav-links");
 
     if (hamburger && navLinks) {
-        hamburger.addEventListener("click", function () {
+        hamburger.addEventListener("click", function (event) {
+            event.stopPropagation(); // Prevent event bubbling
             navLinks.classList.toggle("active");
         });
 
@@ -27,33 +28,22 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-});
-
-
     // ✅ Apply Typing Effect for Index Page
-    if (document.getElementById("typed-text")) {
-        typeText(document.getElementById("typed-text"), 50);
+    const indexText = document.getElementById("typed-text");
+    if (indexText) {
+        typeText(indexText, 50);
     }
 
     // ✅ Apply Typing Effect for About Page
     if (window.location.pathname.includes("about.html")) {
-        typeTextSequentially("#typed-paragraphs p", 15, 1000);
+        typeTextSequentially("#typed-paragraphs p", 15, 800);
     }
 
     // ✅ Initialize Matrix Effect
     initMatrixEffect();
-
-    // ✅ Initialize Custom Cursor
-    initCustomCursor();
-
-    // ✅ Loading Screen Effect
-    setTimeout(() => {
-        const loadingScreen = document.getElementById("loading-screen");
-        if (loadingScreen) loadingScreen.classList.add("hidden");
-    }, 2000);
 });
 
-// ✅ Typing Effect for Multiple Paragraphs
+// ✅ Typing Effect for Multiple Paragraphs (Sequential)
 function typeTextSequentially(selector, speed, delay) {
     const paragraphs = document.querySelectorAll(selector);
     if (!paragraphs.length) return;
@@ -147,27 +137,6 @@ function initMatrixEffect() {
     });
 }
 
-// ✅ Custom Cursor Effect
-function initCustomCursor() {
-    const cursor = document.createElement("div");
-    cursor.id = "custom-cursor";
-    document.body.appendChild(cursor);
-
-    document.addEventListener("mousemove", (e) => {
-        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-    });
-
-    // ✅ Cursor effect for clickable elements
-    document.querySelectorAll("a, button").forEach((elem) => {
-        elem.addEventListener("mouseenter", () => {
-            cursor.style.transform = "scale(1.5)";
-        });
-        elem.addEventListener("mouseleave", () => {
-            cursor.style.transform = "scale(1)";
-        });
-    });
-}
-
 // ✅ Secret Code Activation
 let secretCode = "";
 const triggerCode = "mcmprime";
@@ -178,4 +147,4 @@ document.addEventListener("keydown", function (e) {
         alert("Welcome to the hidden system.");
         secretCode = ""; // Reset
     }
-})
+});
