@@ -122,7 +122,7 @@ function typeText(elementId, speed) {
     type();
 }
 
-// ✅ Matrix Code Rain Effect
+// ✅ Matrix Code Rain Effect (Subtle Version)
 function initMatrixEffect() {
     const canvas = document.getElementById("matrix");
     if (!canvas) return; // Ensure canvas exists before running
@@ -133,15 +133,16 @@ function initMatrixEffect() {
     canvas.height = window.innerHeight;
 
     const characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const fontSize = 14;
+    const fontSize = 12; // ✅ Smaller font size for subtle effect
     const columns = Math.floor(canvas.width / fontSize);
     const drops = Array(columns).fill(1);
 
     function drawMatrix() {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+        // ✅ More transparency to soften effect
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; 
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        ctx.fillStyle = "#29ff79"; // Neon green
+        ctx.fillStyle = "rgba(41, 255, 121, 0.7)"; // ✅ Dimmer neon green
         ctx.font = `${fontSize}px VT323`;
 
         drops.forEach((y, i) => {
@@ -149,14 +150,14 @@ function initMatrixEffect() {
             const x = i * fontSize;
             ctx.fillText(text, x, y * fontSize);
 
-            if (y * fontSize > canvas.height && Math.random() > 0.975) {
+            if (y * fontSize > canvas.height && Math.random() > 0.98) { // ✅ Less frequent character resets
                 drops[i] = 0;
             }
             drops[i]++;
         });
     }
 
-    setInterval(drawMatrix, 50);
+    setInterval(drawMatrix, 75); // ✅ Slower update rate for a calmer effect
 
     window.addEventListener("resize", () => {
         canvas.width = window.innerWidth;
