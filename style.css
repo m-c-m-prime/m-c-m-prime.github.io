@@ -18,12 +18,19 @@ body {
     margin: 0;
     padding: 0;
     cursor: none;
-    background: linear-gradient(90deg, rgba(0,255,0,0.1) 1px, transparent 1px),
-                linear-gradient(0deg, rgba(0,255,0,0.1) 1px, transparent 1px);
+    background: linear-gradient(90deg, rgba(0,255,0,0.05) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(0,255,0,0.05) 1px, transparent 1px);
     background-size: 50px 50px;
     animation: movingGrid 20s linear infinite;
 }
 
+/* ✅ Subtle Background Grid Animation */
+@keyframes movingGrid {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+/* ✅ Loading Screen */
 #loading-screen {
     position: fixed;
     width: 100%;
@@ -43,6 +50,7 @@ body {
     pointer-events: none;
 }
 
+/* ✅ Fix Custom Cursor */
 #custom-cursor {
     position: fixed;
     width: 12px;
@@ -52,8 +60,9 @@ body {
     pointer-events: none;
     mix-blend-mode: difference;
     transition: transform 0.1s linear;
+}
 
-/* ✅ Matrix Effect Background */
+/* ✅ Fix Matrix Background */
 #matrix {
     position: fixed;
     top: 0;
@@ -64,7 +73,7 @@ body {
     pointer-events: none;
 }
 
-/* ✅ Navigation Bar */
+/* ✅ Fix Navigation Bar */
 nav {
     display: flex;
     justify-content: space-between;
@@ -72,6 +81,11 @@ nav {
     background: black;
     padding: 15px 20px;
     border-bottom: 2px solid white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
 /* ✅ Clickable Logo */
@@ -82,7 +96,7 @@ nav {
     font-weight: bold;
 }
 
-/* ✅ Navigation Links */
+/* ✅ Fix Navigation Links */
 .nav-links {
     list-style: none;
     display: flex;
@@ -91,16 +105,23 @@ nav {
     padding: 0;
 }
 
+.nav-links li {
+    margin: 0;
+    padding: 0;
+}
+
 .nav-links li a {
     color: white;
     text-decoration: none;
+    padding: 10px;
+    display: block;
 }
 
 .nav-links li a:hover {
     color: #CCCCCC;
 }
 
-/* ✅ Hamburger Menu */
+/* ✅ Fix Hamburger Menu */
 .hamburger {
     display: none;
     font-size: 2em;
@@ -108,7 +129,7 @@ nav {
     color: white;
 }
 
-/* ✅ Mobile Navigation */
+/* ✅ Fix Mobile Navigation */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -132,19 +153,19 @@ nav {
     }
 }
 
-/* ✅ Main Content */
+/* ✅ Fix Main Content */
 main {
-    padding: 40px;
+    padding: 100px 40px 40px;
     min-height: 60vh;
 }
 
-/* ✅ Hero Section */
+/* ✅ Fix Hero Section */
 .hero {
     text-align: center;
     padding: 20px;
 }
 
-/* ✅ Index Image */
+/* ✅ Fix Index Image */
 .hero-image {
     max-width: 100%;
     height: auto;
@@ -154,14 +175,14 @@ main {
     margin-right: auto;
 }
 
-/* ✅ Typing Effect */
+/* ✅ Fix Typing Effect */
 #typed-text, #typed-paragraph {
     font-size: 1.5em;
     text-align: center;
     margin: 20px auto;
 }
 
-/* ✅ Underline Effect for M–C–M' */
+/* ✅ Fix Underline Effect for M–C–M' */
 .hero h1 {
     position: relative;
     display: inline-block;
@@ -171,7 +192,7 @@ main {
     margin-bottom: 30px;
 }
 
-/* ✅ Animated Underline */
+/* ✅ Fix Animated Underline */
 .hero h1::after {
     content: "";
     position: absolute;
@@ -184,12 +205,12 @@ main {
     transition: width 0.3s ease-in-out;
 }
 
-/* ✅ Hover Effect */
+/* ✅ Fix Hover Effect */
 .hero h1:hover::after {
     width: 120%;
 }
 
-/* ✅ Footer */
+/* ✅ Fix Footer */
 footer {
     text-align: center;
     padding: 15px;
@@ -198,13 +219,13 @@ footer {
     color: #FFFFFF;
 }
 
-/* ✅ Bandcamp Embed */
+/* ✅ Fix Bandcamp Embed */
 .bandcamp-embed {
     max-width: 700px;
     margin: 20px auto;
 }
 
-/* ✅ Gallery Grid */
+/* ✅ Fix Gallery Grid */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -219,7 +240,7 @@ footer {
     border-radius: 5px;
 }
 
-/* ✅ Text Effects */
+/* ✅ Fix Text Effects */
 @keyframes flicker {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.3; }
@@ -245,11 +266,7 @@ h1.glitch, h2.glitch {
     animation: glitch 1s infinite;
 }
 
-@keyframes movingGrid {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
-
-/* ✅ Music Section */
+/* ✅ Fix Music Section */
 .music-section {
     text-align: center;
     max-width: 800px;
@@ -257,7 +274,7 @@ h1.glitch, h2.glitch {
     padding: 20px;
 }
 
-/* ✅ Ensure Embeds Are Centered */
+/* ✅ Fix Embeds */
 .music-embed {
     display: flex;
     justify-content: center;
@@ -265,45 +282,7 @@ h1.glitch, h2.glitch {
     width: 100%;
 }
 
-/* ✅ Custom Bandcamp Styling */
-.bandcamp-custom {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 10px;
-    background: #000;
-    border: 2px solid #29ff79;
-    border-radius: 10px;
-    box-shadow: 0px 0px 20px rgba(41, 255, 121, 0.4);
-    text-align: center;
-}
-
-/* ✅ Customize Bandcamp iframe */
-.bandcamp-player {
-    width: 100%;
-    height: 160px;
-    border-radius: 10px;
-    filter: brightness(90%) contrast(120%);
-}
-
-/* ✅ Add Glow Effect on Hover */
-.bandcamp-custom:hover {
-    box-shadow: 0px 0px 25px rgba(41, 255, 121, 0.7);
-}
-
-/* ✅ Responsive Design Tweaks */
-@media (max-width: 768px) {
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        grid-gap: 10px;
-    }
-
-    h1, h2 {
-        font-size: 1.5em;
-    }
-}
-
-/* ✅ Glitch Click Effect */
+/* ✅ Fix Glitch Click Effect */
 .glitch-click {
     animation: glitchClick 0.5s linear;
 }

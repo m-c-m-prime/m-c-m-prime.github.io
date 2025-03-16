@@ -24,26 +24,35 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ✅ Apply Typing Effect for the Index Page
+    // ✅ Apply Typing Effect for Index Page
     if (document.getElementById("typed-text")) {
         typeText(document.getElementById("typed-text"), 50);
     }
 
-    // ✅ Apply Typing Effect for the About Page (PARAGRAPHS NOW WORK)
+    // ✅ Apply Typing Effect for About Page
     if (window.location.pathname.includes("about.html")) {
         typeTextSequentially("#typed-paragraphs p", 15, 1000);
     }
 
     // ✅ Initialize Matrix Effect
     initMatrixEffect();
+
+    // ✅ Initialize Custom Cursor
+    initCustomCursor();
+
+    // ✅ Loading Screen Effect
+    setTimeout(() => {
+        const loadingScreen = document.getElementById("loading-screen");
+        if (loadingScreen) loadingScreen.classList.add("hidden");
+    }, 2000);
 });
 
-// ✅ Typing Effect for **Multiple Paragraphs**
+// ✅ Typing Effect for Multiple Paragraphs
 function typeTextSequentially(selector, speed, delay) {
     const paragraphs = document.querySelectorAll(selector);
     if (!paragraphs.length) return;
 
-    let index = 0; // Start at first paragraph
+    let index = 0;
 
     function typeParagraph(paragraph, callback) {
         let text = paragraph.innerText;
@@ -132,7 +141,8 @@ function initMatrixEffect() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+// ✅ Custom Cursor Effect
+function initCustomCursor() {
     const cursor = document.createElement("div");
     cursor.id = "custom-cursor";
     document.body.appendChild(cursor);
@@ -140,8 +150,19 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("mousemove", (e) => {
         cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
     });
-});
 
+    // ✅ Cursor effect for clickable elements
+    document.querySelectorAll("a, button").forEach((elem) => {
+        elem.addEventListener("mouseenter", () => {
+            cursor.style.transform = "scale(1.5)";
+        });
+        elem.addEventListener("mouseleave", () => {
+            cursor.style.transform = "scale(1)";
+        });
+    });
+}
+
+// ✅ Secret Code Activation
 let secretCode = "";
 const triggerCode = "mcmprime";
 
@@ -151,10 +172,4 @@ document.addEventListener("keydown", function (e) {
         alert("Welcome to the hidden system.");
         secretCode = ""; // Reset
     }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    setTimeout(() => {
-        document.getElementById("loading-screen").classList.add("hidden");
-    }, 2000); // Delay of 2 seconds
-});
+})
