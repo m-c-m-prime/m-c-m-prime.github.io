@@ -1,4 +1,4 @@
-// ✅ Run script after DOM loads
+// ✅ Ensure JavaScript runs after the DOM loads
 document.addEventListener("DOMContentLoaded", function () {
     
     // ✅ Highlight Active Navigation Link
@@ -33,12 +33,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ✅ Apply Typing Effect for the Index Page
     if (document.getElementById("typed-text")) {
-        typeText("typed-text", 50);
+        typeText(document.getElementById("typed-text"), 50);
     }
 
     // ✅ Apply Sequential Typing Effect for the About Page
     if (window.location.pathname.includes("about.html")) {
-        typeTextSequentially("#typed-paragraphs p", 20, 800);
+        typeTextSequentially("#typed-paragraphs p", 20, 1000);
     }
 
     // ✅ Initialize Matrix Effect
@@ -103,8 +103,7 @@ function typeTextSequentially(selector, speed, delay) {
 }
 
 // ✅ Single Element Typing Effect
-function typeText(elementId, speed) {
-    const element = document.getElementById(elementId);
+function typeText(element, speed) {
     if (!element) return; // Ensure element exists
 
     let text = element.innerText;
