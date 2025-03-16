@@ -17,6 +17,7 @@ body {
     color: #FFFFFF !important;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* ✅ Matrix Effect Background */
@@ -30,7 +31,7 @@ body {
     pointer-events: none;
 }
 
-/* ✅ Navigation Bar (Fixed Width & Centered) */
+/* ✅ Navigation Bar (Fixed & Responsive) */
 nav {
     display: flex;
     justify-content: space-between;
@@ -38,7 +39,9 @@ nav {
     background: black;
     padding: 15px 20px;
     border-bottom: 2px solid white;
-    flex-wrap: wrap;  /* Prevents items from overflowing */
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* ✅ Clickable Logo */
@@ -49,20 +52,25 @@ nav {
     font-weight: bold;
 }
 
-/* ✅ Navigation Links (Fixed to Prevent Overflow) */
+/* ✅ Navigation Links (Prevent Overflow) */
 .nav-links {
     list-style: none;
     display: flex;
     gap: 15px;
     margin: 0;
     padding: 0;
-    flex-wrap: wrap; /* Allows wrapping if needed */
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Align to right */
+    width: auto;
+}
+
+.nav-links li {
+    white-space: nowrap; /* Prevents word break */
 }
 
 .nav-links li a {
     color: white;
     text-decoration: none;
-    white-space: nowrap; /* Prevents breaking words */
     padding: 5px 10px;
 }
 
@@ -99,7 +107,7 @@ nav {
         width: 200px;
         padding: 15px;
         text-align: right;
-        z-index: 1000;
+        z-index: 1001;
     }
 
     .nav-links.active {
@@ -108,6 +116,7 @@ nav {
 
     .hamburger {
         display: block;
+        z-index: 1002;
     }
 }
 
@@ -213,4 +222,44 @@ footer {
     h1, h2 {
         font-size: 1.5em;
     }
+}
+
+/* ✅ Fix Navbar Spacing on Small Screens */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .nav-links {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav-links li {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hamburger {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+/* ✅ Glitch Click Effect */
+.glitch-click {
+    animation: glitchClick 0.5s linear;
+}
+
+@keyframes glitchClick {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(-2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0, 0); }
 }

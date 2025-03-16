@@ -1,12 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    // ✅ Highlight Active Navigation Link
-    document.querySelectorAll("nav ul li a").forEach((link) => {
-        if (link.href === window.location.href) {
-            link.style.color = "#fff";
-            link.style.textDecoration = "underline";
-        }
-    });
+    
+    // ✅ Remove loading screen after page loads
+    const loadingScreen = document.getElementById("loading-screen");
+    if (loadingScreen) {
+        setTimeout(() => {
+            loadingScreen.classList.add("hidden");
+            setTimeout(() => {
+                loadingScreen.remove();  // ✅ Fully remove from DOM to prevent interference
+            }, 500); // Ensure animation finishes before removal
+        }, 2000); // Delay of 2 seconds
+    }
 
     // ✅ Fix Hamburger Menu Toggle
     const hamburger = document.querySelector(".hamburger");
@@ -23,6 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+
+});
+
 
     // ✅ Apply Typing Effect for Index Page
     if (document.getElementById("typed-text")) {
