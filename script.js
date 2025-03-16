@@ -19,6 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // ✅ Apply Scramble Effect to `h1.scramble`
+    document.querySelectorAll("h1.scramble").forEach((heading) => {
+        scrambleTextEffect(heading);
+    });
+
     // ✅ Apply Typing Effect for Index Page
     const indexText = document.getElementById("typed-text");
     if (indexText) {
@@ -35,6 +40,32 @@ document.addEventListener("DOMContentLoaded", function () {
         initMatrixEffect();
     }
 });
+
+// ✅ Scramble Text Effect Function
+function scrambleTextEffect(element) {
+    const originalText = element.textContent;
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
+    let iterations = 0;
+
+    function scramble() {
+        element.textContent = originalText
+            .split("")
+            .map((char, index) =>
+                index < iterations ? originalText[index] : letters[Math.floor(Math.random() * letters.length)]
+            )
+            .join("");
+
+        if (iterations < originalText.length) {
+            iterations++;
+            setTimeout(scramble, 50); // Adjust speed here
+        }
+    }
+
+    element.addEventListener("mouseover", () => {
+        iterations = 0;
+        scramble();
+    });
+}
 
 // ✅ Typing Effect for Multiple Paragraphs (Sequential)
 function typeTextSequentially(selector, speed, delay) {
@@ -137,15 +168,7 @@ const triggerCode = "mcmprime";
 document.addEventListener("keydown", function (e) {
     secretCode += e.key.toLowerCase();
     if (secretCode.includes(triggerCode)) {
-        alert("pls kill me.");
+        alert("Welcome to the hidden system.");
         secretCode = ""; // Reset
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    const title = document.querySelector("h1.scramble");
-
-    if (title) {
-        title.classList.add("flicker"); // ✅ Ensures flicker effect is applied
     }
 });
