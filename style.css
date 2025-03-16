@@ -13,56 +13,13 @@
 body {
     font-family: 'VT323', monospace !important;
     font-size: 1.4em;
-    background: #000 !important;  /* Ensure background stays black */
-    color: #FFFFFF !important; /* Prevent iOS dark mode interference */
+    background: #000 !important;
+    color: #FFFFFF !important;
     margin: 0;
     padding: 0;
-    cursor: none;
-    background: linear-gradient(90deg, rgba(0,255,0,0.05) 1px, transparent 1px),
-                linear-gradient(0deg, rgba(0,255,0,0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: movingGrid 20s linear infinite;
 }
 
-/* ✅ Subtle Background Grid Animation */
-@keyframes movingGrid {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
-}
-
-/* ✅ Loading Screen */
-#loading-screen {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: black;
-    color: #29ff79;
-    font-size: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 1s ease-out;
-    z-index: 1000;
-}
-
-.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* ✅ Fix Custom Cursor */
-#custom-cursor {
-    position: fixed;
-    width: 12px;
-    height: 12px;
-    background: #29ff79;
-    border-radius: 50%;
-    pointer-events: none;
-    mix-blend-mode: difference;
-    transition: transform 0.1s linear;
-}
-
-/* ✅ Fix Matrix Background */
+/* ✅ Matrix Effect Background */
 #matrix {
     position: fixed;
     top: 0;
@@ -73,7 +30,7 @@ body {
     pointer-events: none;
 }
 
-/* ✅ Fix Navigation Bar */
+/* ✅ Navigation Bar (Fixed Width & Centered) */
 nav {
     display: flex;
     justify-content: space-between;
@@ -81,11 +38,7 @@ nav {
     background: black;
     padding: 15px 20px;
     border-bottom: 2px solid white;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+    flex-wrap: wrap;  /* Prevents items from overflowing */
 }
 
 /* ✅ Clickable Logo */
@@ -96,32 +49,37 @@ nav {
     font-weight: bold;
 }
 
-/* ✅ Fix Navigation Links */
+/* ✅ Navigation Links (Fixed to Prevent Overflow) */
 .nav-links {
     list-style: none;
     display: flex;
     gap: 15px;
     margin: 0;
     padding: 0;
-}
-
-.nav-links li {
-    margin: 0;
-    padding: 0;
+    flex-wrap: wrap; /* Allows wrapping if needed */
 }
 
 .nav-links li a {
     color: white;
     text-decoration: none;
-    padding: 10px;
-    display: block;
+    white-space: nowrap; /* Prevents breaking words */
+    padding: 5px 10px;
 }
 
 .nav-links li a:hover {
     color: #CCCCCC;
 }
 
-/* ✅ Fix Hamburger Menu */
+/* ✅ Fix Navbar Overflow for Small Screens */
+@media (max-width: 1024px) {
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* ✅ Hamburger Menu */
 .hamburger {
     display: none;
     font-size: 2em;
@@ -129,7 +87,7 @@ nav {
     color: white;
 }
 
-/* ✅ Fix Mobile Navigation */
+/* ✅ Mobile Navigation */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -153,19 +111,19 @@ nav {
     }
 }
 
-/* ✅ Fix Main Content */
+/* ✅ Main Content */
 main {
-    padding: 100px 40px 40px;
+    padding: 40px;
     min-height: 60vh;
 }
 
-/* ✅ Fix Hero Section */
+/* ✅ Hero Section */
 .hero {
     text-align: center;
     padding: 20px;
 }
 
-/* ✅ Fix Index Image */
+/* ✅ Index Image */
 .hero-image {
     max-width: 100%;
     height: auto;
@@ -175,14 +133,14 @@ main {
     margin-right: auto;
 }
 
-/* ✅ Fix Typing Effect */
-#typed-text, #typed-paragraph {
+/* ✅ Typing Effect */
+#typed-text {
     font-size: 1.5em;
     text-align: center;
     margin: 20px auto;
 }
 
-/* ✅ Fix Underline Effect for M–C–M' */
+/* ✅ Underline Effect for M–C–M' */
 .hero h1 {
     position: relative;
     display: inline-block;
@@ -192,7 +150,7 @@ main {
     margin-bottom: 30px;
 }
 
-/* ✅ Fix Animated Underline */
+/* ✅ Animated Underline */
 .hero h1::after {
     content: "";
     position: absolute;
@@ -205,12 +163,12 @@ main {
     transition: width 0.3s ease-in-out;
 }
 
-/* ✅ Fix Hover Effect */
+/* ✅ Hover Effect */
 .hero h1:hover::after {
     width: 120%;
 }
 
-/* ✅ Fix Footer */
+/* ✅ Footer */
 footer {
     text-align: center;
     padding: 15px;
@@ -219,13 +177,18 @@ footer {
     color: #FFFFFF;
 }
 
-/* ✅ Fix Bandcamp Embed */
+/* ✅ Remove Custom Cursor */
+#custom-cursor {
+    display: none !important;
+}
+
+/* ✅ Bandcamp Embed */
 .bandcamp-embed {
     max-width: 700px;
     margin: 20px auto;
 }
 
-/* ✅ Fix Gallery Grid */
+/* ✅ Gallery Grid */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -240,58 +203,14 @@ footer {
     border-radius: 5px;
 }
 
-/* ✅ Fix Text Effects */
-@keyframes flicker {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-    55% { opacity: 0.7; }
-    60% { opacity: 0.2; }
-    70% { opacity: 0.9; }
-}
+/* ✅ Responsive Fix for Gallery */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-gap: 10px;
+    }
 
-h1.flicker, h2.flicker {
-    animation: flicker 2s infinite;
-}
-
-@keyframes glitch {
-    0% { text-shadow: none; }
-    20% { text-shadow: -2px -2px red; }
-    40% { text-shadow: 2px 2px cyan; }
-    60% { text-shadow: -2px 2px magenta; }
-    80% { text-shadow: 2px -2px lime; }
-    100% { text-shadow: none; }
-}
-
-h1.glitch, h2.glitch {
-    animation: glitch 1s infinite;
-}
-
-/* ✅ Fix Music Section */
-.music-section {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* ✅ Fix Embeds */
-.music-embed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-/* ✅ Fix Glitch Click Effect */
-.glitch-click {
-    animation: glitchClick 0.5s linear;
-}
-
-@keyframes glitchClick {
-    0% { transform: translate(0, 0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(2px, -2px); }
-    60% { transform: translate(-2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-    100% { transform: translate(0, 0); }
+    h1, h2 {
+        font-size: 1.5em;
+    }
 }
