@@ -165,18 +165,43 @@ function initMatrixEffect() {
     });
 }
 
-// ✅ Glitch Click Effect for Links
-document.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent instant navigation
-        const url = this.href;
-
-        this.classList.add("glitch-click");
-        setTimeout(() => {
-            window.location.href = url; // Navigate after effect
-        }, 500); // Delay navigation
-    });
+document.addEventListener("DOMContentLoaded", function () {
+    // ✅ Ensure typing effect is applied to the 'about' page
+    if (window.location.pathname.includes("about.html")) {
+        typeTextSequentially("#typed-paragraphs p", 25, 500); // Typing speed and delay between paragraphs
+    }
 });
+
+// ✅ Sequential Typing Effect Function (Fixed)
+function typeTextSequentially(selector, speed, delay) {
+    const paragraphs = document.querySelectorAll(selector);
+    if (!paragraphs.length) return; // Exit if no paragraphs are found
+
+    let currentParagraph = 0; // Track which paragraph is being typed
+
+    function typeParagraph(index) {
+        if (index >= paragraphs.length) return; // Stop when all paragraphs are done
+
+        let paragraph = paragraphs[index];
+        let text = paragraph.innerText;
+        paragraph.innerHTML = ""; // Clear paragraph before typing
+        let charIndex = 0;
+
+        function typeChar() {
+            if (charIndex < text.length) {
+                paragraph.innerHTML += text.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeChar, speed);
+            } else {
+                setTimeout(() => typeParagraph(index + 1), delay); // Move to next paragraph after delay
+            }
+        }
+
+        typeChar();
+    }
+
+    typeParagraph(0); // Start typing the first paragraph
+}
 
 // ✅ Bandcamp Play Button (for future custom integrations)
 function playBandcamp() {
