@@ -34,7 +34,7 @@ body {
 /* ✅ Navigation Bar */
 nav {
     display: flex;
-    justify-content: center; /* ✅ Ensures nav stays centered */
+    justify-content: space-between; /* ✅ Ensures logo on left, links on right */
     align-items: center;
     background: black;
     padding: 15px 20px;
@@ -42,6 +42,19 @@ nav {
     width: 100%;
     box-sizing: border-box;
     flex-wrap: wrap;
+    position: relative;
+}
+
+/* ✅ Fix Logo Alignment */
+.logo {
+    margin-right: auto; /* ✅ Pushes nav links to the right */
+}
+
+.logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 /* ✅ Navigation Links */
@@ -52,7 +65,7 @@ nav {
     margin: 0;
     padding: 0;
     flex-wrap: wrap;
-    justify-content: center; /* ✅ Fixes wrapping issue */
+    justify-content: flex-end;
 }
 
 .nav-links li {
@@ -83,9 +96,12 @@ nav {
     font-size: 2em;
     cursor: pointer;
     color: white;
+    position: absolute;
+    top: 15px;
+    right: 20px;
 }
 
-/* ✅ Fix Mobile Navigation */
+/* ✅ Responsive Fix for Mobile */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -113,9 +129,13 @@ nav {
 /* ✅ Ensure Navbar Spacing on Small Screens */
 @media (max-width: 600px) {
     nav {
-        flex-direction: column;
+        flex-direction: row;
         text-align: center;
         padding: 10px;
+    }
+
+    .logo {
+        margin: 0;
     }
 
     .nav-links {
@@ -127,12 +147,6 @@ nav {
         display: block;
         width: 100%;
         text-align: center;
-    }
-
-    .hamburger {
-        position: absolute;
-        top: 15px;
-        right: 15px;
     }
 }
 

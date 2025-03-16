@@ -3,7 +3,7 @@ const gameInput = document.getElementById("game-input");
 
 const gameData = {
     start: {
-        text: "You wake up in a neon void. The circuits of capital hum beneath your feet. A voice whispers: 'M-C-M’ – Where do you go?\n\n 1. Follow the hum\n 2. Walk against the current\n 3. Stay still'",
+        text: "You wake up in a neon void. The circuits of capital hum beneath your feet. A voice whispers: 'M-C-M’ – Where do you go?\n\n 1. Follow the hum\n 2. Walk against the current\n 3. Stay still",
         choices: {
             "1": "hum",
             "2": "against",
@@ -50,10 +50,12 @@ const gameData = {
 
 let currentNode = "start";
 
+// Function to update the game text
 function updateGame() {
     gameText.innerHTML += `\n\n> ${gameData[currentNode].text}`;
 }
 
+// Event listener for Enter key
 gameInput.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
         let input = gameInput.value.trim();
@@ -68,4 +70,5 @@ gameInput.addEventListener("keydown", function(event) {
     }
 });
 
+// Start the game when the page loads
 window.onload = updateGame;

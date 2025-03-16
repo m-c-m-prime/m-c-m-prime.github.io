@@ -59,16 +59,25 @@
 </head>
 <body>
     <nav>
-        <ul class="nav-links">
-            <li><a href="index.html">0</a></li>
-            <li><a href="about.html">definition</a></li>
-            <li><a href="music.html">soundbank</a></li>
-            <li><a href="writing.html">textbank</a></li>
-            <li><a href="gallery.html">imagebank</a></li>
-            <li><a href="game.html">play</a></li>
-            <li><a href="contact.html">contact</a></li>
-        </ul>
-    </nav>
+    <!-- ✅ Logo (now correctly positioned on the left) -->
+    <div class="logo">
+        <a href="index.html">M–C–M'</a>
+    </div>
+
+    <!-- ✅ Hamburger Menu Button (for mobile) -->
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <!-- ✅ Navigation Links -->
+    <ul class="nav-links">
+        <li><a href="index.html">0</a></li>
+        <li><a href="about.html">definition</a></li>
+        <li><a href="music.html">soundbank</a></li>
+        <li><a href="writing.html">textbank</a></li>
+        <li><a href="gallery.html">imagebank</a></li>
+        <li><a href="game.html">play</a></li>
+        <li><a href="contact.html">contact</a></li>
+    </ul>
+</nav>
     
     <div class="terminal">
         <!-- ✅ New instructions line -->
@@ -77,6 +86,6 @@
         <input type="text" id="game-input" placeholder="Type your choice...">
     </div>
     
-    <script src="game.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

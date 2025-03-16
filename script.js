@@ -179,3 +179,8 @@ document.addEventListener("keydown", function (e) {
         secretCode = ""; // Reset
     }
 });
+
+function toggleMenu() {
+    const nav = document.querySelector(".nav-links");
+    nav.classList.toggle("active");
+}
