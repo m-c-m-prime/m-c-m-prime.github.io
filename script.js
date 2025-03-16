@@ -3,15 +3,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelector(".nav-links");
 
     if (hamburger && navLinks) {
+        // ✅ FIX: Prevent menu from instantly closing on iOS
         hamburger.addEventListener("click", function (event) {
-            event.stopPropagation(); // ✅ Prevents event conflicts
+            event.stopPropagation();
             navLinks.classList.toggle("active");
         });
 
+        // ✅ FIX: Only close menu if clicking outside, NOT on the menu itself
         document.addEventListener("click", function (event) {
             if (!navLinks.contains(event.target) && !hamburger.contains(event.target)) {
                 navLinks.classList.remove("active");
             }
+        });
+
+        // ✅ Fix for iOS Safari Touch Events
+        hamburger.addEventListener("touchstart", function (event) {
+            event.stopPropagation();
+            navLinks.classList.toggle("active");
         });
     }
 });
@@ -83,7 +91,6 @@ function typeText(element, speed) {
     type();
 }
 
-// ✅ Matrix Code Rain Effect (Subtle)
 function initMatrixEffect() {
     const canvas = document.getElementById("matrix");
     if (!canvas) return;
@@ -94,15 +101,15 @@ function initMatrixEffect() {
     canvas.height = window.innerHeight;
 
     const characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const fontSize = 12;
+    const fontSize = 12; // Subtle effect
     const columns = Math.floor(canvas.width / fontSize);
     const drops = Array(columns).fill(1);
 
     function drawMatrix() {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillStyle = "rgba(0, 0, 0, 0.07)"; // Softer transparency
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        ctx.fillStyle = "rgba(41, 255, 121, 0.7)";
+        ctx.fillStyle = "rgba(41, 255, 121, 0.6)"; // Dimmer neon green
         ctx.font = `${fontSize}px VT323`;
 
         drops.forEach((y, i) => {
@@ -116,6 +123,19 @@ function initMatrixEffect() {
             drops[i]++;
         });
     }
+
+    setInterval(drawMatrix, 75);
+
+    window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+}
+
+// ✅ Ensure Matrix runs after the page loads
+document.addEventListener("DOMContentLoaded", function () {
+    initMatrixEffect();
+});
 
     setInterval(drawMatrix, 75);
 
