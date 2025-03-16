@@ -253,6 +253,33 @@ footer {
     90% { opacity: 0.7; }
 }
 
+@keyframes scramble {
+    0% { opacity: 1; text-shadow: none; }
+    10% { content: "Z9@#*"; }
+    20% { content: "V3%X!"; }
+    30% { content: "T&8C2"; }
+    40% { content: "P$Q5A"; }
+    50% { opacity: 0.6; }
+    60% { content: "J!@ZK"; }
+    70% { content: "1M7B9"; }
+    80% { content: "C6&TG"; }
+    90% { content: "X4Z@M"; }
+    100% { opacity: 1; text-shadow: none; }
+}
+
+h1.scramble {
+    display: inline-block;
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: flicker 1.5s infinite alternate ease-in-out;
+}
+
+h1.scramble:hover {
+    animation: scramble 0.6s steps(5, end) infinite;
+}
+
+
 /* ✅ Apply Flicker Effect to the Title */
 h1.flicker {
     animation: flicker 1.5s infinite alternate ease-in-out;

@@ -41,29 +41,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// ✅ Scramble Text Effect Function
+// ✅ Scramble Text Effect (NOW FIXED)
 function scrambleTextEffect(element) {
     const originalText = element.textContent;
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
-    let iterations = 0;
-
+    
     function scramble() {
-        element.textContent = originalText
-            .split("")
-            .map((char, index) =>
-                index < iterations ? originalText[index] : letters[Math.floor(Math.random() * letters.length)]
-            )
-            .join("");
+        let iterations = 0;
+        const interval = setInterval(() => {
+            element.textContent = originalText
+                .split("")
+                .map((char, index) =>
+                    index < iterations ? originalText[index] : letters[Math.floor(Math.random() * letters.length)]
+                )
+                .join("");
 
-        if (iterations < originalText.length) {
+            if (iterations >= originalText.length) {
+                clearInterval(interval);
+            }
             iterations++;
-            setTimeout(scramble, 50); // Adjust speed here
-        }
+        }, 50);
     }
 
     element.addEventListener("mouseover", () => {
-        iterations = 0;
         scramble();
+    });
+
+    element.addEventListener("mouseleave", () => {
+        setTimeout(() => {
+            element.textContent = originalText; // ✅ Restores original text
+        }, 500);
     });
 }
 
