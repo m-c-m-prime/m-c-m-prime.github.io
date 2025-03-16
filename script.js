@@ -1,16 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-    
-    // ✅ Remove Loading Screen After Page Loads
-    const loadingScreen = document.getElementById("loading-screen");
-    if (loadingScreen) {
-        setTimeout(() => {
-            loadingScreen.classList.add("hidden");
-            setTimeout(() => {
-                loadingScreen.remove();  // ✅ Fully remove from DOM after fade-out
-            }, 500);
-        }, 1200); // Fades out after 1.2s
-    }
-
     // ✅ Fix Hamburger Menu Toggle
     const hamburger = document.querySelector(".hamburger");
     const navLinks = document.querySelector(".nav-links");

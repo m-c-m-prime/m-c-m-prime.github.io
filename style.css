@@ -20,27 +20,6 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-/* ✅ Loading Screen (Centered & Fixed) */
-#loading-screen {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background: black;
-    color: #29ff79;
-    font-size: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    transition: opacity 0.8s ease-out;
-}
-
-/* ✅ Hide Loading Screen After Page Loads */
-.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
 /* ✅ Matrix Effect Background */
 #matrix {
     position: fixed;
