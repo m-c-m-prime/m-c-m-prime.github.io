@@ -1,6 +1,7 @@
 /* ✅ Re-import Digital Font */
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
+/* ✅ Force Dark Mode */
 @media (prefers-color-scheme: dark) {
     body {
         background: #000 !important;
@@ -18,7 +19,18 @@ body {
     padding: 0;
 }
 
-/* ✅ Navigation Bar (Fixed Styling) */
+/* ✅ Matrix Effect Background */
+#matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ✅ Navigation Bar */
 nav {
     display: flex;
     justify-content: space-between;
@@ -92,7 +104,7 @@ main {
     min-height: 60vh;
 }
 
-/* ✅ Centering Hero Section */
+/* ✅ Hero Section */
 .hero {
     text-align: center;
     padding: 20px;
@@ -106,6 +118,13 @@ main {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* ✅ Typing Effect */
+#typed-text, #typed-paragraph {
+    font-size: 1.5em;
+    text-align: center;
+    margin: 20px auto;
 }
 
 /* ✅ Underline Effect for M–C–M' */
@@ -208,7 +227,7 @@ h1.glitch, h2.glitch {
     width: 100%;
 }
 
-/* ✅ Custom Bandcamp Styling (Now Integrated Correctly) */
+/* ✅ Custom Bandcamp Styling */
 .bandcamp-custom {
     width: 100%;
     max-width: 600px;
@@ -246,16 +265,7 @@ h1.glitch, h2.glitch {
     }
 }
 
-#matrix {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    pointer-events: none;
-}
-
+/* ✅ Glitch Click Effect */
 .glitch-click {
     animation: glitchClick 0.5s linear;
 }

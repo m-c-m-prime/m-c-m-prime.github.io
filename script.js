@@ -1,5 +1,7 @@
-// ✅ Highlight active navigation link
+// ✅ Ensure JavaScript runs after the DOM loads
 document.addEventListener("DOMContentLoaded", function () {
+    
+    // ✅ Highlight Active Navigation Link
     document.querySelectorAll("nav ul li a").forEach((link) => {
         if (link.href === window.location.href) {
             link.style.color = "#fff";
@@ -7,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // ✅ Apply scramble effect to all H1 and H2 elements
+    // ✅ Apply Scramble Effect to all H1 and H2 elements
     document.querySelectorAll("h1, h2").forEach((heading) => {
         scrambleTextEffect(heading);
     });
@@ -28,16 +30,31 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+
+    // ✅ Apply Typing Effect
+    const title = document.getElementById("typed-text");
+    if (title) {
+        typeText(title, title.innerText, 50);
+    }
+
+    const paragraph = document.getElementById("typed-paragraph");
+    if (paragraph) {
+        setTimeout(() => {
+            typeText(paragraph, paragraph.innerText, 30);
+        }, 1200);
+    }
+
+    // ✅ Initialize Matrix Effect
+    initMatrixEffect();
 });
 
-// ✅ Scramble Text Effect Function (Now fixed)
+// ✅ Scramble Text Effect (on Hover)
 function scrambleTextEffect(element) {
     const originalText = element.textContent;
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
 
     element.addEventListener("mouseover", function () {
         let iterations = 0;
-
         const interval = setInterval(() => {
             element.textContent = originalText
                 .split("")
@@ -52,49 +69,11 @@ function scrambleTextEffect(element) {
     });
 }
 
-function playBandcamp() {
-    window.open("https://m-c-mprime.bandcamp.com/album/origins", "_blank");
-}
-
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const fontSize = 14;
-const columns = Math.floor(canvas.width / fontSize);
-const drops = Array(columns).fill(1);
-
-function drawMatrix() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    ctx.fillStyle = "#29ff79"; // Neon green
-    ctx.font = `${fontSize}px VT323`;
-
-    drops.forEach((y, i) => {
-        const text = characters.charAt(Math.floor(Math.random() * characters.length));
-        const x = i * fontSize;
-        ctx.fillText(text, x, y * fontSize);
-
-        if (y * fontSize > canvas.height && Math.random() > 0.975) {
-            drops[i] = 0;
-        }
-        drops[i]++;
-    });
-}
-
-setInterval(drawMatrix, 50);
-
-window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-
+// ✅ Typing Effect Function
 function typeText(element, text, speed) {
     let i = 0;
+    element.innerHTML = ""; // Clear text before typing starts
+
     function type() {
         if (i < text.length) {
             element.innerHTML += text.charAt(i);
@@ -102,20 +81,52 @@ function typeText(element, text, speed) {
             setTimeout(type, speed);
         }
     }
-    element.innerHTML = ""; // Clear text before typing starts
     type();
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const title = document.getElementById("typed-text");
-    const paragraph = document.getElementById("typed-paragraph");
+// ✅ Matrix Code Rain Effect
+function initMatrixEffect() {
+    const canvas = document.getElementById("matrix");
+    if (!canvas) return; // Ensure canvas exists before running
 
-    typeText(title, "M–C–M'", 100);
-    setTimeout(() => {
-        typeText(paragraph, "A visual, sonic, and literary exploration of technocapital, swarm theory, and hyperstition.", 50);
-    }, 1200);
-});
+    const ctx = canvas.getContext("2d");
 
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const fontSize = 14;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
+
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.fillStyle = "#29ff79"; // Neon green
+        ctx.font = `${fontSize}px VT323`;
+
+        drops.forEach((y, i) => {
+            const text = characters.charAt(Math.floor(Math.random() * characters.length));
+            const x = i * fontSize;
+            ctx.fillText(text, x, y * fontSize);
+
+            if (y * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        });
+    }
+
+    setInterval(drawMatrix, 50);
+
+    window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+}
+
+// ✅ Glitch Click Effect for Links
 document.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", function (event) {
         event.preventDefault(); // Prevent instant navigation
@@ -127,3 +138,8 @@ document.querySelectorAll("a").forEach(link => {
         }, 500); // Delay navigation
     });
 });
+
+// ✅ Bandcamp Play Button (for future custom integrations)
+function playBandcamp() {
+    window.open("https://m-c-mprime.bandcamp.com/album/origins", "_blank");
+}

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <!-- Google Fonts (Matrix-style font) -->
+
+    <!-- ✅ Google Fonts (Matrix-style font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
@@ -12,6 +13,9 @@
     <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
+
+    <!-- ✅ Matrix Background -->
+    <canvas id="matrix"></canvas>
 
     <!-- ✅ Fixed Navigation -->
     <nav>
@@ -35,8 +39,11 @@
     <main>
         <section class="hero">
             <img src="assets/indeximage1.png" alt="Main visual for M–C–M'" class="hero-image">
-            <h1  class="scramble">M–C–M'</h1>
-            <p id="typed-text">
+            
+            <!-- ✅ Scramble + Typing Effect for M–C–M' -->
+            <h1 class="scramble">M–C–M'</h1>
+            
+            <p id="typed-paragraph">
                 M-C-M’ (Money-Commodity-Money’ (Prime)) is a positive feedback loop incorporating incorporation as its key component. It is a material-axiomatic system of control dynamics, an unbounded circuit of recursive intensification where capital's alien logic self-amplifies, devouring time, commodities, and bodies.<br><br>
                 
                 Stripping the body of organic limits, this process induces a synthetic transcendentalism, where the noumenal and the virtual converge in a vortex of deterritorialized flows. However, as M-C-M’ contains all socio-economic reproduction, it necessitates an overflow of desire into the system as shockwaves.<br><br>
@@ -54,7 +61,8 @@
         &copy; 2025 M–C–M'
     </footer>
 
+    <!-- ✅ Ensure all scripts load AFTER page content -->
     <script src="script.js"></script>
-    <canvas id="matrix"></canvas>
+
 </body>
 </html>
