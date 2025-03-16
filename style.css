@@ -17,9 +17,10 @@ body {
     color: #FFFFFF !important;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden; /* ✅ Prevents horizontal scroll */
 }
 
+/* ✅ Matrix Background (Fixed) */
 #matrix {
     position: fixed;
     top: 0;
@@ -30,7 +31,7 @@ body {
     pointer-events: none;
 }
 
-/* ✅ Navigation Bar */
+/* ✅ Navigation Bar (Fixed Alignment & Wrapping) */
 nav {
     display: flex;
     justify-content: space-between;
@@ -38,9 +39,9 @@ nav {
     background: black;
     padding: 15px 20px;
     border-bottom: 2px solid white;
-    flex-wrap: wrap;
     width: 100%;
     box-sizing: border-box;
+    flex-wrap: wrap;
 }
 
 /* ✅ Clickable Logo */
@@ -51,7 +52,7 @@ nav {
     font-weight: bold;
 }
 
-/* ✅ Navigation Links */
+/* ✅ Navigation Links (Fixed Wrapping & Spacing) */
 .nav-links {
     list-style: none;
     display: flex;
@@ -60,7 +61,6 @@ nav {
     padding: 0;
     flex-wrap: wrap;
     justify-content: flex-end;
-    width: auto;
 }
 
 .nav-links li {
@@ -77,7 +77,7 @@ nav {
     color: #CCCCCC;
 }
 
-/* ✅ Fix Navbar Overflow */
+/* ✅ Fix Navbar Overflow for Larger Screens */
 @media (max-width: 1024px) {
     .nav-links {
         flex-wrap: wrap;
@@ -85,7 +85,7 @@ nav {
     }
 }
 
-/* ✅ Hamburger Menu */
+/* ✅ Hamburger Menu (Fixed for iOS) */
 .hamburger {
     display: none;
     font-size: 2em;
@@ -93,7 +93,7 @@ nav {
     color: white;
 }
 
-/* ✅ Fix the Mobile Navigation */
+/* ✅ Fix Mobile Navigation */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -102,7 +102,7 @@ nav {
         top: 60px;
         right: 0;
         background: rgba(0, 0, 0, 0.9);
-        width: 200px;
+        width: 220px;
         padding: 15px;
         text-align: right;
         z-index: 1000;
@@ -115,6 +115,32 @@ nav {
     .hamburger {
         display: block;
         cursor: pointer;
+    }
+}
+
+/* ✅ Fix Navbar Spacing on Small Screens */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .nav-links {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav-links li {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hamburger {
+        position: absolute;
+        top: 15px;
+        right: 15px;
     }
 }
 
@@ -175,7 +201,7 @@ main {
     width: 120%;
 }
 
-/* ✅ Footer */
+/* ✅ Footer (Fixed Centering) */
 footer {
     text-align: center;
     padding: 15px;
@@ -184,10 +210,21 @@ footer {
     color: #FFFFFF;
 }
 
-/* ✅ Bandcamp Embed */
-.bandcamp-embed {
-    max-width: 700px;
-    margin: 20px auto;
+/* ✅ Fix for Centering Soundbank Content */
+.music-section {
+    text-align: center;
+    max-width: 800px; /* ✅ Adjust as needed */
+    margin: 0 auto; /* ✅ Centers the entire section */
+    padding: 20px;
+}
+
+/* ✅ Fix Bandcamp Embed Alignment */
+.music-embed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 /* ✅ Responsive Fix for Gallery */
@@ -200,47 +237,4 @@ footer {
     h1, h2 {
         font-size: 1.5em;
     }
-}
-
-/* ✅ Fix Navbar Spacing on Small Screens */
-@media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-        text-align: center;
-        padding: 10px;
-    }
-
-    .nav-links {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .nav-links li {
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
-
-    .hamburger {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-    }
-}
-
-/* ✅ Fix for Centering Soundbank Content */
-.music-section {
-    text-align: center;
-    max-width: 800px; /* Adjust as needed */
-    margin: 0 auto; /* Centers the entire section */
-    padding: 20px;
-}
-
-/* ✅ Center Bandcamp Embeds */
-.music-embed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 20px;
 }

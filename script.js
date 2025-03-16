@@ -1,28 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // ✅ Fix Hamburger Menu for iOS
     const hamburger = document.querySelector(".hamburger");
     const navLinks = document.querySelector(".nav-links");
 
     if (hamburger && navLinks) {
-        // ✅ FIX: Prevent menu from instantly closing on iOS
-        hamburger.addEventListener("click", function (event) {
+        function toggleMenu(event) {
             event.stopPropagation();
             navLinks.classList.toggle("active");
-        });
+        }
 
-        // ✅ FIX: Only close menu if clicking outside, NOT on the menu itself
+        hamburger.addEventListener("click", toggleMenu);
+        hamburger.addEventListener("touchstart", toggleMenu);
+
         document.addEventListener("click", function (event) {
             if (!navLinks.contains(event.target) && !hamburger.contains(event.target)) {
                 navLinks.classList.remove("active");
             }
         });
-
-        // ✅ Fix for iOS Safari Touch Events
-        hamburger.addEventListener("touchstart", function (event) {
-            event.stopPropagation();
-            navLinks.classList.toggle("active");
-        });
     }
-});
 
     // ✅ Apply Typing Effect for Index Page
     const indexText = document.getElementById("typed-text");
@@ -35,8 +30,10 @@ document.addEventListener("DOMContentLoaded", function () {
         typeTextSequentially("#typed-paragraphs p", 15, 800);
     }
 
-    // ✅ Initialize Matrix Effect
-    initMatrixEffect();
+    // ✅ Initialize Matrix Effect (Only on Index Page)
+    if (document.getElementById("matrix")) {
+        initMatrixEffect();
+    }
 });
 
 // ✅ Typing Effect for Multiple Paragraphs (Sequential)
@@ -91,6 +88,7 @@ function typeText(element, speed) {
     type();
 }
 
+// ✅ Matrix Code Rain Effect (Subtle)
 function initMatrixEffect() {
     const canvas = document.getElementById("matrix");
     if (!canvas) return;
@@ -132,19 +130,6 @@ function initMatrixEffect() {
     });
 }
 
-// ✅ Ensure Matrix runs after the page loads
-document.addEventListener("DOMContentLoaded", function () {
-    initMatrixEffect();
-});
-
-    setInterval(drawMatrix, 75);
-
-    window.addEventListener("resize", () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
-}
-
 // ✅ Secret Code Activation
 let secretCode = "";
 const triggerCode = "mcmprime";
@@ -152,7 +137,7 @@ const triggerCode = "mcmprime";
 document.addEventListener("keydown", function (e) {
     secretCode += e.key.toLowerCase();
     if (secretCode.includes(triggerCode)) {
-        alert("Welcome to the hidden system.");
+        alert("pls kill me.");
         secretCode = ""; // Reset
     }
 });
