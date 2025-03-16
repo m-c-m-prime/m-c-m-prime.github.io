@@ -51,3 +51,7 @@ function scrambleTextEffect(element) {
         }, 50);
     });
 }
+
+function playBandcamp() {
+    window.open("https://m-c-mprime.bandcamp.com/album/origins", "_blank");
+}
