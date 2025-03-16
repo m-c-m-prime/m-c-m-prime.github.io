@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ✅ Apply Sequential Typing Effect for the About Page
     if (window.location.pathname.includes("about.html")) {
-        typeTextSequentially("#typed-paragraphs p", 20, 1000);
+        typeTextSequentially("#typed-paragraphs p", 20, 800);
     }
 
     // ✅ Initialize Matrix Effect
