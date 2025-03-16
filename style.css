@@ -249,3 +249,20 @@ footer {
         right: 15px;
     }
 }
+
+/* ✅ Fix for Centering Soundbank Content */
+.music-section {
+    text-align: center;
+    max-width: 800px; /* Adjust as needed */
+    margin: 0 auto; /* Centers the entire section */
+    padding: 20px;
+}
+
+/* ✅ Center Bandcamp Embeds */
+.music-embed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
