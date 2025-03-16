@@ -1,16 +1,17 @@
-no@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+/* ✅ Re-import Digital Font */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-/* Global Styles */
+/* ✅ Global Styles */
 body {
     font-family: 'VT323', monospace;
     font-size: 1.4em;
-    background: #000;
+    background: #000 !important;  /* Ensures black background */
     color: #FFFFFF;
     margin: 0;
     padding: 0;
 }
 
-/* ✅ Navigation Bar (Cleaned) */
+/* ✅ Navigation Bar (Fixed Styling) */
 nav {
     display: flex;
     justify-content: space-between;
@@ -28,7 +29,7 @@ nav {
     font-weight: bold;
 }
 
-/* ✅ Navigation Links (Cleaned) */
+/* ✅ Navigation Links */
 .nav-links {
     list-style: none;
     display: flex;
@@ -54,7 +55,7 @@ nav {
     color: white;
 }
 
-/* ✅ Mobile Navigation Styles */
+/* ✅ Mobile Navigation */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -74,7 +75,7 @@ nav {
     }
 
     .hamburger {
-        display: block; /* ✅ Ensure it's visible */
+        display: block;
     }
 }
 
@@ -104,10 +105,10 @@ main {
 .hero h1 {
     position: relative;
     display: inline-block;
-    font-size: 3em; /* Adjust as needed */
+    font-size: 3em;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 30px; /* Space between text and paragraph */
+    margin-bottom: 30px;
 }
 
 /* ✅ Animated Underline */
@@ -115,17 +116,17 @@ main {
     content: "";
     position: absolute;
     left: 50%;
-    bottom: -10px; /* Adjust spacing between text and underline */
+    bottom: -10px;
     width: 100%;
     height: 3px;
-    background-color: #fff; /* Adjust underline color */
+    background-color: #fff;
     transform: translateX(-50%);
     transition: width 0.3s ease-in-out;
 }
 
-/* ✅ Hover Effect (Optional) */
+/* ✅ Hover Effect */
 .hero h1:hover::after {
-    width: 120%; /* Expands underline slightly on hover */
+    width: 120%;
 }
 
 /* ✅ Footer */
@@ -143,7 +144,7 @@ footer {
     margin: 20px auto;
 }
 
-/* ✅ Gallery Grid (Responsive Fix) */
+/* ✅ Gallery Grid */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -200,26 +201,14 @@ h1.glitch, h2.glitch {
     width: 100%;
 }
 
-/* ✅ Responsive Design Tweaks */
-@media (max-width: 768px) {
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        grid-gap: 10px;
-    }
-
-    h1, h2 {
-        font-size: 1.5em;
-    }
-}
-
-/* ✅ Custom Bandcamp Player Styling */
+/* ✅ Custom Bandcamp Styling (Now Integrated Correctly) */
 .bandcamp-custom {
     width: 100%;
-    max-width: 600px; /* Adjust width */
+    max-width: 600px;
     margin: 20px auto;
     padding: 10px;
     background: #000;
-    border: 2px solid #29ff79; /* Cyberpunk green */
+    border: 2px solid #29ff79;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(41, 255, 121, 0.4);
     text-align: center;
@@ -233,41 +222,19 @@ h1.glitch, h2.glitch {
     filter: brightness(90%) contrast(120%);
 }
 
-/* ✅ Add glow effect on hover */
+/* ✅ Add Glow Effect on Hover */
 .bandcamp-custom:hover {
     box-shadow: 0px 0px 25px rgba(41, 255, 121, 0.7);
 }
 
-.custom-player {
-    background: #000;
-    color: #29ff79;
-    padding: 20px;
-    border: 2px solid #29ff79;
-    text-align: center;
-    max-width: 400px;
-    margin: 20px auto;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(41, 255, 121, 0.5);
-}
+/* ✅ Responsive Design Tweaks */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-gap: 10px;
+    }
 
-.custom-player img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.custom-player button {
-    background: #29ff79;
-    color: #000;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.custom-player button:hover {
-    background: #000;
-    color: #29ff79;
-    border: 2px solid #29ff79;
+    h1, h2 {
+        font-size: 1.5em;
+    }
 }
