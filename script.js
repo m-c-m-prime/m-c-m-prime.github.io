@@ -69,41 +69,36 @@ function scrambleTextEffect(element) {
     });
 }
 
-// ✅ Sequential Typing Effect for Multiple Paragraphs
+// ✅ Sequential Typing Effect for Multiple Paragraphs (Fixed)
 function typeTextSequentially(containerSelector, speed) {
     const container = document.querySelector(containerSelector);
     if (!container) return; // Ensure container exists
 
     const paragraphs = container.querySelectorAll("p"); // Select all paragraphs inside
-    let index = 0; // Track which paragraph we're typing
+    let currentParagraph = 0; // Track which paragraph is being typed
 
-    function typeParagraph(paragraph, callback) {
+    function typeParagraph(index) {
+        if (index >= paragraphs.length) return; // Stop if all paragraphs are done
+
+        let paragraph = paragraphs[index];
         let text = paragraph.innerText;
         paragraph.innerHTML = ""; // Clear before typing
+        let charIndex = 0;
 
-        let i = 0;
-        function type() {
-            if (i < text.length) {
-                paragraph.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
-            } else if (callback) {
-                setTimeout(callback, 500); // Pause before next paragraph
+        function typeChar() {
+            if (charIndex < text.length) {
+                paragraph.innerHTML += text.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeChar, speed);
+            } else {
+                setTimeout(() => typeParagraph(index + 1), 600); // Move to next paragraph after delay
             }
         }
-        type();
+
+        typeChar();
     }
 
-    function typeNextParagraph() {
-        if (index < paragraphs.length) {
-            typeParagraph(paragraphs[index], () => {
-                index++;
-                typeNextParagraph(); // Move to next paragraph
-            });
-        }
-    }
-
-    typeNextParagraph(); // Start typing first paragraph
+    typeParagraph(0); // Start typing the first paragraph
 }
 
 // ✅ Run Typing Effect for the 'About' Page
