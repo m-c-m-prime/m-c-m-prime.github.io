@@ -69,20 +69,49 @@ function scrambleTextEffect(element) {
     });
 }
 
-// ✅ Typing Effect Function
-function typeText(element, text, speed) {
-    let i = 0;
-    element.innerHTML = ""; // Clear text before typing starts
+// ✅ Sequential Typing Effect for Multiple Paragraphs
+function typeTextSequentially(containerSelector, speed) {
+    const container = document.querySelector(containerSelector);
+    if (!container) return; // Ensure container exists
 
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
+    const paragraphs = container.querySelectorAll("p"); // Select all paragraphs inside
+    let index = 0; // Track which paragraph we're typing
+
+    function typeParagraph(paragraph, callback) {
+        let text = paragraph.innerText;
+        paragraph.innerHTML = ""; // Clear before typing
+
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                paragraph.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else if (callback) {
+                setTimeout(callback, 500); // Pause before next paragraph
+            }
+        }
+        type();
+    }
+
+    function typeNextParagraph() {
+        if (index < paragraphs.length) {
+            typeParagraph(paragraphs[index], () => {
+                index++;
+                typeNextParagraph(); // Move to next paragraph
+            });
         }
     }
-    type();
+
+    typeNextParagraph(); // Start typing first paragraph
 }
+
+// ✅ Run Typing Effect for the 'About' Page
+document.addEventListener("DOMContentLoaded", function () {
+    if (window.location.pathname.includes("about.html")) {
+        typeTextSequentially(".about-content", 30); // Adjust speed if needed
+    }
+});
 
 // ✅ Matrix Code Rain Effect
 function initMatrixEffect() {
