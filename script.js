@@ -141,3 +141,11 @@ document.addEventListener("keydown", function (e) {
         secretCode = ""; // Reset
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const title = document.querySelector("h1.scramble");
+
+    if (title) {
+        title.classList.add("flicker"); // ✅ Ensures flicker effect is applied
+    }
+});
