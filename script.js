@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ✅ Apply Sequential Typing Effect for the About Page
     if (window.location.pathname.includes("about.html")) {
-        typeTextSequentially("#typed-paragraphs p", 20, 800);
+        typeTextSequentially("#typed-paragraphs p", 20, 1000);
     }
 
     // ✅ Initialize Matrix Effect
@@ -66,36 +66,59 @@ function scrambleTextEffect(element) {
     });
 }
 
-// ✅ Sequential Typing Effect for Multiple Paragraphs (Fixed)
+// ✅ Fixed Sequential Typing Effect for Multiple Paragraphs
 function typeTextSequentially(selector, speed, delay) {
     const paragraphs = document.querySelectorAll(selector);
     if (!paragraphs.length) return; // Exit if no paragraphs are found
 
     let index = 0; // Track which paragraph is being typed
 
-    function typeParagraph() {
-        if (index >= paragraphs.length) return; // Stop when all paragraphs are done
-
-        let paragraph = paragraphs[index];
+    function typeParagraph(paragraph, callback) {
         let text = paragraph.innerText;
-        paragraph.innerHTML = ""; // Clear paragraph before typing
-        let charIndex = 0;
+        paragraph.innerHTML = ""; // Clear before typing
+        let i = 0;
 
-        function typeChar() {
-            if (charIndex < text.length) {
-                paragraph.innerHTML += text.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeChar, speed);
-            } else {
-                index++;
-                setTimeout(typeParagraph, delay); // Move to next paragraph after delay
+        function type() {
+            if (i < text.length) {
+                paragraph.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else if (callback) {
+                setTimeout(callback, delay); // Move to next paragraph after delay
             }
         }
-
-        typeChar();
+        type();
     }
 
-    typeParagraph(); // Start typing the first paragraph
+    function typeNextParagraph() {
+        if (index < paragraphs.length) {
+            typeParagraph(paragraphs[index], () => {
+                index++;
+                typeNextParagraph();
+            });
+        }
+    }
+
+    typeNextParagraph(); // Start typing the first paragraph
+}
+
+// ✅ Single Element Typing Effect
+function typeText(elementId, speed) {
+    const element = document.getElementById(elementId);
+    if (!element) return; // Ensure element exists
+
+    let text = element.innerText;
+    element.innerHTML = ""; // Clear before typing
+    let i = 0;
+
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
 }
 
 // ✅ Matrix Code Rain Effect (Subtle Version)
