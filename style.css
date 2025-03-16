@@ -284,3 +284,45 @@ h1.scramble:hover {
 h1.flicker {
     animation: flicker 1.5s infinite alternate ease-in-out;
 }
+
+.game-body {
+    background-color: black;
+    color: #00ff00;
+    font-family: monospace;
+    text-align: center;
+    padding: 20px;
+}
+
+.game-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #00ff00;
+    background-color: #111;
+}
+
+#game-output {
+    height: 300px;
+    overflow-y: auto;
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #00ff00;
+}
+
+#game-input {
+    width: 80%;
+    padding: 10px;
+    background: black;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    font-family: monospace;
+}
+
+button {
+    padding: 10px;
+    background: black;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    cursor: pointer;
+}
