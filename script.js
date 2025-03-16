@@ -1,4 +1,4 @@
-// ✅ Ensure JavaScript runs after the DOM loads
+// ✅ Run script after DOM loads
 document.addEventListener("DOMContentLoaded", function () {
     
     // ✅ Highlight Active Navigation Link
@@ -31,17 +31,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ✅ Apply Typing Effect
-    const title = document.getElementById("typed-text");
-    if (title) {
-        typeText(title, title.innerText, 50);
+    // ✅ Apply Typing Effect for the Index Page
+    if (document.getElementById("typed-text")) {
+        typeText("typed-text", 50);
     }
 
-    const paragraph = document.getElementById("typed-paragraph");
-    if (paragraph) {
-        setTimeout(() => {
-            typeText(paragraph, paragraph.innerText, 30);
-        }, 1200);
+    // ✅ Apply Sequential Typing Effect for the About Page
+    if (window.location.pathname.includes("about.html")) {
+        typeTextSequentially(".about-content", 30);
     }
 
     // ✅ Initialize Matrix Effect
@@ -74,39 +71,56 @@ function typeTextSequentially(containerSelector, speed) {
     const container = document.querySelector(containerSelector);
     if (!container) return; // Ensure container exists
 
-    const paragraphs = container.querySelectorAll("p"); // Select all paragraphs inside
-    let currentParagraph = 0; // Track which paragraph is being typed
+    const paragraphs = container.querySelectorAll("p");
+    let index = 0;
 
-    function typeParagraph(index) {
-        if (index >= paragraphs.length) return; // Stop if all paragraphs are done
-
-        let paragraph = paragraphs[index];
+    function typeParagraph(paragraph, callback) {
         let text = paragraph.innerText;
         paragraph.innerHTML = ""; // Clear before typing
-        let charIndex = 0;
+        let i = 0;
 
-        function typeChar() {
-            if (charIndex < text.length) {
-                paragraph.innerHTML += text.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeChar, speed);
-            } else {
-                setTimeout(() => typeParagraph(index + 1), 600); // Move to next paragraph after delay
+        function type() {
+            if (i < text.length) {
+                paragraph.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else if (callback) {
+                setTimeout(callback, 600); // Delay before next paragraph
             }
         }
-
-        typeChar();
+        type();
     }
 
-    typeParagraph(0); // Start typing the first paragraph
+    function typeNextParagraph() {
+        if (index < paragraphs.length) {
+            typeParagraph(paragraphs[index], () => {
+                index++;
+                typeNextParagraph();
+            });
+        }
+    }
+
+    typeNextParagraph(); // Start typing first paragraph
 }
 
-// ✅ Run Typing Effect for the 'About' Page
-document.addEventListener("DOMContentLoaded", function () {
-    if (window.location.pathname.includes("about.html")) {
-        typeTextSequentially(".about-content", 30); // Adjust speed if needed
+// ✅ Single Element Typing Effect
+function typeText(elementId, speed) {
+    const element = document.getElementById(elementId);
+    if (!element) return; // Ensure element exists
+
+    let text = element.innerText;
+    element.innerHTML = ""; // Clear before typing
+    let i = 0;
+
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
     }
-});
+    type();
+}
 
 // ✅ Matrix Code Rain Effect
 function initMatrixEffect() {
