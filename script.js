@@ -1,4 +1,4 @@
-// ✅ Ensure JavaScript runs after the DOM loads
+// ✅ Run script after DOM loads
 document.addEventListener("DOMContentLoaded", function () {
     
     // ✅ Highlight Active Navigation Link
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ✅ Apply Sequential Typing Effect for the About Page
     if (window.location.pathname.includes("about.html")) {
-        typeTextSequentially("#typed-paragraphs p", 25, 600);
+        typeTextSequentially("#typed-paragraphs p", 20, 800);
     }
 
     // ✅ Initialize Matrix Effect
@@ -66,26 +66,7 @@ function scrambleTextEffect(element) {
     });
 }
 
-// ✅ Single Element Typing Effect
-function typeText(elementId, speed) {
-    const element = document.getElementById(elementId);
-    if (!element) return; // Ensure element exists
-
-    let text = element.innerText;
-    element.innerHTML = ""; // Clear before typing
-    let i = 0;
-
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    type();
-}
-
-// ✅ Sequential Typing Effect for About Page
+// ✅ Sequential Typing Effect for Multiple Paragraphs (Fixed)
 function typeTextSequentially(selector, speed, delay) {
     const paragraphs = document.querySelectorAll(selector);
     if (!paragraphs.length) return; // Exit if no paragraphs are found
