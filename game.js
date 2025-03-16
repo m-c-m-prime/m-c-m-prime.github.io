@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateGame() {
         gameText.innerHTML += `<br><br> <strong>${gameData[currentNode].text}</strong>`;
+        gameText.scrollTop = gameText.scrollHeight; // Auto-scroll
     }
 
     gameInput.addEventListener("keydown", function (event) {
@@ -69,6 +70,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // ✅ Ensure the first prompt appears on page load
+    // ✅ Debugging: Ensure script runs
+    console.log("Game script loaded successfully");
+
+    // ✅ Force the first question to appear
     updateGame();
 });
