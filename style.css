@@ -1,12 +1,19 @@
 /* ✅ Re-import Digital Font */
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #000 !important;
+        color: #FFFFFF !important;
+    }
+}
+
 /* ✅ Global Styles */
 body {
-    font-family: 'VT323', monospace;
+    font-family: 'VT323', monospace !important;
     font-size: 1.4em;
-    background: #000 !important;  /* Ensures black background */
-    color: #FFFFFF;
+    background: #000 !important;  /* Ensure background stays black */
+    color: #FFFFFF !important; /* Prevent iOS dark mode interference */
     margin: 0;
     padding: 0;
 }
