@@ -1,17 +1,11 @@
-// ✅ Ensure JavaScript runs after the DOM loads
 document.addEventListener("DOMContentLoaded", function () {
-    
+
     // ✅ Highlight Active Navigation Link
     document.querySelectorAll("nav ul li a").forEach((link) => {
         if (link.href === window.location.href) {
             link.style.color = "#fff";
             link.style.textDecoration = "underline";
         }
-    });
-
-    // ✅ Apply Scramble Effect to all H1 and H2 elements
-    document.querySelectorAll("h1, h2").forEach((heading) => {
-        scrambleTextEffect(heading);
     });
 
     // ✅ Fix Hamburger Menu Toggle
@@ -23,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
             navLinks.classList.toggle("active");
         });
 
-        // ✅ Close menu when clicking outside
         document.addEventListener("click", function (event) {
             if (!navLinks.contains(event.target) && !hamburger.contains(event.target)) {
                 navLinks.classList.remove("active");
@@ -36,46 +29,25 @@ document.addEventListener("DOMContentLoaded", function () {
         typeText(document.getElementById("typed-text"), 50);
     }
 
-    // ✅ Apply Sequential Typing Effect for the About Page
+    // ✅ Apply Typing Effect for the About Page (PARAGRAPHS NOW WORK)
     if (window.location.pathname.includes("about.html")) {
-        typeTextSequentially("#typed-paragraphs p", 20, 1000);
+        typeTextSequentially("#typed-paragraphs p", 15, 1000);
     }
 
     // ✅ Initialize Matrix Effect
     initMatrixEffect();
 });
 
-// ✅ Scramble Text Effect (on Hover)
-function scrambleTextEffect(element) {
-    const originalText = element.textContent;
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
-
-    element.addEventListener("mouseover", function () {
-        let iterations = 0;
-        const interval = setInterval(() => {
-            element.textContent = originalText
-                .split("")
-                .map((char, index) =>
-                    index < iterations ? originalText[index] : letters[Math.floor(Math.random() * letters.length)]
-                )
-                .join("");
-
-            if (iterations >= originalText.length) clearInterval(interval);
-            iterations++;
-        }, 50);
-    });
-}
-
-// ✅ Fixed Sequential Typing Effect for Multiple Paragraphs
+// ✅ Typing Effect for **Multiple Paragraphs**
 function typeTextSequentially(selector, speed, delay) {
     const paragraphs = document.querySelectorAll(selector);
-    if (!paragraphs.length) return; // Exit if no paragraphs are found
+    if (!paragraphs.length) return;
 
-    let index = 0; // Track which paragraph is being typed
+    let index = 0; // Start at first paragraph
 
     function typeParagraph(paragraph, callback) {
         let text = paragraph.innerText;
-        paragraph.innerHTML = ""; // Clear before typing
+        paragraph.innerHTML = "";
         let i = 0;
 
         function type() {
@@ -84,7 +56,7 @@ function typeTextSequentially(selector, speed, delay) {
                 i++;
                 setTimeout(type, speed);
             } else if (callback) {
-                setTimeout(callback, delay); // Move to next paragraph after delay
+                setTimeout(callback, delay);
             }
         }
         type();
@@ -99,15 +71,13 @@ function typeTextSequentially(selector, speed, delay) {
         }
     }
 
-    typeNextParagraph(); // Start typing the first paragraph
+    typeNextParagraph();
 }
 
-// ✅ Single Element Typing Effect
+// ✅ Typing Effect for Single Element
 function typeText(element, speed) {
-    if (!element) return; // Ensure element exists
-
     let text = element.innerText;
-    element.innerHTML = ""; // Clear before typing
+    element.innerHTML = "";
     let i = 0;
 
     function type() {
@@ -120,10 +90,10 @@ function typeText(element, speed) {
     type();
 }
 
-// ✅ Matrix Code Rain Effect (Subtle Version)
+// ✅ Matrix Code Rain Effect (Subtle)
 function initMatrixEffect() {
     const canvas = document.getElementById("matrix");
-    if (!canvas) return; // Ensure canvas exists before running
+    if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
 
@@ -131,16 +101,15 @@ function initMatrixEffect() {
     canvas.height = window.innerHeight;
 
     const characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const fontSize = 12; // ✅ Smaller font size for subtle effect
+    const fontSize = 12;
     const columns = Math.floor(canvas.width / fontSize);
     const drops = Array(columns).fill(1);
 
     function drawMatrix() {
-        // ✅ More transparency to soften effect
-        ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; 
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        ctx.fillStyle = "rgba(41, 255, 121, 0.7)"; // ✅ Dimmer neon green
+        ctx.fillStyle = "rgba(41, 255, 121, 0.7)";
         ctx.font = `${fontSize}px VT323`;
 
         drops.forEach((y, i) => {
@@ -148,35 +117,17 @@ function initMatrixEffect() {
             const x = i * fontSize;
             ctx.fillText(text, x, y * fontSize);
 
-            if (y * fontSize > canvas.height && Math.random() > 0.98) { // ✅ Less frequent character resets
+            if (y * fontSize > canvas.height && Math.random() > 0.98) {
                 drops[i] = 0;
             }
             drops[i]++;
         });
     }
 
-    setInterval(drawMatrix, 75); // ✅ Slower update rate for a calmer effect
+    setInterval(drawMatrix, 75);
 
     window.addEventListener("resize", () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     });
-}
-
-// ✅ Glitch Click Effect for Links
-document.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent instant navigation
-        const url = this.href;
-
-        this.classList.add("glitch-click");
-        setTimeout(() => {
-            window.location.href = url; // Navigate after effect
-        }, 500); // Delay navigation
-    });
-});
-
-// ✅ Bandcamp Play Button (for future custom integrations)
-function playBandcamp() {
-    window.open("https://m-c-mprime.bandcamp.com/album/origins", "_blank");
 }
