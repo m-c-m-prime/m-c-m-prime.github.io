@@ -245,3 +245,26 @@ h1.glitch, h2.glitch {
         font-size: 1.5em;
     }
 }
+
+#matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.glitch-click {
+    animation: glitchClick 0.5s linear;
+}
+
+@keyframes glitchClick {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(-2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0, 0); }
+}
