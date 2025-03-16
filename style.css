@@ -306,3 +306,32 @@ h1.flicker {
     max-width: 400px; /* ✅ Prevents the iframes from stretching */
     height: 120px;
 }
+
+/* ✅ Center Contact Section */
+.contact-section {
+    text-align: center;
+    max-width: 800px; /* ✅ Ensures content is not too wide */
+    margin: 0 auto; /* ✅ Centers everything */
+    padding: 20px;
+}
+
+/* ✅ Center Contact Email Link */
+.email-link {
+    color: #00ff00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.email-link:hover {
+    text-decoration: underline;
+    color: #29ff79;
+}
+
+/* ✅ Ensure Image is Centered */
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto; /* ✅ Ensures centering */
+}
+
