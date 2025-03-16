@@ -1,10 +1,10 @@
-    // ✅ Fix Hamburger Menu Toggle
+document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.querySelector(".hamburger");
     const navLinks = document.querySelector(".nav-links");
 
     if (hamburger && navLinks) {
         hamburger.addEventListener("click", function (event) {
-            event.stopPropagation(); // Prevent event bubbling
+            event.stopPropagation(); // ✅ Prevents event conflicts
             navLinks.classList.toggle("active");
         });
 
@@ -14,6 +14,7 @@
             }
         });
     }
+});
 
     // ✅ Apply Typing Effect for Index Page
     const indexText = document.getElementById("typed-text");
